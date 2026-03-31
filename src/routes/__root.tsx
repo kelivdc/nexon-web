@@ -19,7 +19,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Software Development Company – Web & Mobile Apps | Nexonace',
       },
     ],
     links: [
