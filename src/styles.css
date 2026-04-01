@@ -8,6 +8,7 @@
 
 /* ─── Brand Tokens ─────────────────────────────────────────────── */
 :root {
+  color-scheme: light;
   --brand-blue:        #003399;
   --brand-blue-soft:   #1e4bb5;
   --brand-blue-light:  #e8eeff;
@@ -30,38 +31,10 @@
   --footer-text:   #64748b;
 }
 
-/* ─── Dark Mode ────────────────────────────────────────────────── */
-:root[data-theme="dark"] {
-  --sea-ink:       #e2e8f0;
-  --sea-ink-soft:  #94a3b8;
-  --foam:          #080c14;
-  --surface:       rgba(15, 23, 42, 0.80);
-  --surface-strong:rgba(2, 6, 23, 0.97);
-  --line:          rgba(255, 255, 255, 0.08);
-  --inset-glint:   rgba(255, 255, 255, 0.04);
-  --kicker:        var(--brand-orange-soft);
-  --bg-base:       #020617;
-  --header-bg:     rgba(2, 6, 23, 0.92);
-  --brand-blue-light: rgba(0, 51, 153, 0.20);
-  --brand-orange-light: rgba(255, 102, 0, 0.15);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --sea-ink:       #e2e8f0;
-    --sea-ink-soft:  #94a3b8;
-    --foam:          #080c14;
-    --surface:       rgba(15, 23, 42, 0.80);
-    --surface-strong:rgba(2, 6, 23, 0.97);
-    --line:          rgba(255, 255, 255, 0.08);
-    --inset-glint:   rgba(255, 255, 255, 0.04);
-    --kicker:        var(--brand-orange-soft);
-    --bg-base:       #020617;
-    --header-bg:     rgba(2, 6, 23, 0.92);
-    --brand-blue-light: rgba(0, 51, 153, 0.20);
-    --brand-orange-light: rgba(255, 102, 0, 0.15);
-  }
-}
+
+/* ─── Force Light Mode (dark mode disabled site-wide) ─────────── */
+/* No prefers-color-scheme override — always use light theme */
 
 /* ─── Base Reset ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
