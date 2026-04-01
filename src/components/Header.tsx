@@ -1,78 +1,96 @@
+'use client'
 import { Link } from '@tanstack/react-router'
-import ThemeToggle from './ThemeToggle'
+import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
+
+const navLinks = [
+  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
+  { to: '/themes-gallery', label: 'Themes' },
+  { to: '/contact', label: 'Contact' },
+]
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--header-bg)] px-4 backdrop-blur-lg">
-      <nav className="page-wrap flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4">
-        <h2 className="m-0 flex-shrink-0 text-base font-semibold tracking-tight">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-3 py-1.5 text-sm text-[var(--sea-ink)] no-underline shadow-[0_8px_24px_rgba(30,90,72,0.08)] sm:px-4 sm:py-2"
-          >
-            <span className="h-2 w-2 rounded-full bg-[linear-gradient(90deg,#56c6be,#7ed3bf)]" />
-            TanStack Start
-          </Link>
-        </h2>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? 'bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,51,153,0.08)] border-b border-[var(--line)]'
+          : 'bg-transparent'
+        }`}
+    >
+      <nav className="page-wrap flex items-center justify-between h-20">
+        {/* LEFT: Logo */}
+        <Link to="/" className="flex-shrink-0 flex items-center transition-opacity hover:opacity-80">
+          <img src="/logo.png" alt="NexonAce" className="h-11 w-auto" />
+        </Link>
 
-        <div className="ml-auto flex items-center gap-1.5 sm:ml-0 sm:gap-2">
-          <a
-            href="https://x.com/tan_stack"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden rounded-xl p-2 text-[var(--sea-ink-soft)] transition hover:bg-[var(--link-bg-hover)] hover:text-[var(--sea-ink)] sm:block"
-          >
-            <span className="sr-only">Follow TanStack on X</span>
-            <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
-              <path
-                fill="currentColor"
-                d="M12.6 1h2.2L10 6.48 15.64 15h-4.41L7.78 9.82 3.23 15H1l5.14-5.84L.72 1h4.52l3.12 4.73L12.6 1zm-.77 12.67h1.22L4.57 2.26H3.26l8.57 11.41z"
-              />
-            </svg>
-          </a>
-          <a
-            href="https://github.com/TanStack"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden rounded-xl p-2 text-[var(--sea-ink-soft)] transition hover:bg-[var(--link-bg-hover)] hover:text-[var(--sea-ink)] sm:block"
-          >
-            <span className="sr-only">Go to TanStack GitHub</span>
-            <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
-              <path
-                fill="currentColor"
-                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-              />
-            </svg>
-          </a>
-
-          <ThemeToggle />
+        {/* MIDDLE: Nav Links — hidden on mobile */}
+        <div className="hidden md:flex items-center gap-10">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="relative text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--sea-ink-soft)] transition-colors hover:text-[var(--brand-blue)] group"
+              activeProps={{ className: 'relative text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--brand-blue)] group' }}
+            >
+              {link.label}
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[var(--brand-orange)] transition-all duration-300 group-hover:w-full" />
+            </Link>
+          ))}
         </div>
 
-        <div className="order-3 flex w-full flex-wrap items-center gap-x-4 gap-y-1 pb-1 text-sm font-semibold sm:order-2 sm:w-auto sm:flex-nowrap sm:pb-0">
+        {/* RIGHT: CTA Button + Hamburger */}
+        <div className="flex items-center gap-4">
           <Link
-            to="/"
-            className="nav-link"
-            activeProps={{ className: 'nav-link is-active' }}
+            to="/contact"
+            className="hidden md:inline-flex items-center gap-2 rounded-full bg-[var(--brand-blue)] px-7 py-3 text-[13px] font-bold uppercase tracking-[0.1em] text-white shadow-lg shadow-[var(--brand-blue)]/20 transition-all hover:bg-[var(--brand-orange)] hover:shadow-[var(--brand-orange)]/20 hover:scale-105 active:scale-95"
           >
-            Home
+            Get Free Consultation
           </Link>
-          <Link
-            to="/about"
-            className="nav-link"
-            activeProps={{ className: 'nav-link is-active' }}
+
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 text-[var(--sea-ink)] rounded-xl hover:bg-[var(--foam)]"
+            aria-label="Toggle menu"
           >
-            About
-          </Link>
-          <a
-            href="https://tanstack.com/start/latest/docs/framework/react/overview"
-            className="nav-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Docs
-          </a>
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </nav>
+
+      {/* MOBILE DRAWER */}
+      {menuOpen && (
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-[var(--line)] px-6 py-8 flex flex-col gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setMenuOpen(false)}
+              className="text-sm font-bold uppercase tracking-widest text-[var(--sea-ink-soft)] hover:text-[var(--brand-blue)] transition"
+              activeProps={{ className: 'text-sm font-bold uppercase tracking-widest text-[var(--brand-blue)]' }}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="rounded-full bg-[var(--brand-orange)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--brand-orange-soft)]"
+          >
+            Get Free Website Consultation
+          </Link>
+        </div>
+      )}
     </header>
   )
 }
