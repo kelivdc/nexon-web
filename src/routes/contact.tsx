@@ -49,7 +49,7 @@ function ContactPage() {
     e.preventDefault()
     setLoading(true)
     setErrors({})
-    
+
     const formData = new FormData(e.currentTarget)
     const rawData = {
       name: formData.get('name') as string,
@@ -60,7 +60,7 @@ function ContactPage() {
     }
 
     const validation = contactFormSchema.safeParse(rawData)
-    
+
     if (!validation.success) {
       setErrors(validation.error.flatten().fieldErrors)
       setLoading(false)
@@ -72,7 +72,7 @@ function ContactPage() {
         data: validation.data
       })
       setSuccess(true)
-      ; (e.target as HTMLFormElement).reset()
+        ; (e.target as HTMLFormElement).reset()
     } catch (err) {
       console.error(err)
       alert("Failed to send message. Please try again.")
@@ -89,7 +89,7 @@ function ContactPage() {
         <img
           src={IMG_bg}
           alt="Contact background"
-          className="absolute inset-0 w-full h-full object-cover opacity-10"
+          className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--sea-ink)] via-[var(--sea-ink)]/95 to-[var(--brand-blue)]/40" />

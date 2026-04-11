@@ -1,31 +1,50 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Calendar, Clock, User, ArrowLeft, Share2, Twitter, Linkedin, Facebook } from 'lucide-react'
-import { posts } from './blog'
+import { createServerFn } from '@tanstack/react-start'
+import { z } from 'zod'
+import { db } from '../../db'
+import { blog } from '../../db/schema'
+import { eq, ne, desc } from 'drizzle-orm'
+
+const getBlogPostData = createServerFn({ method: 'GET' })
+  .inputValidator((id: unknown) => z.string().parse(id))
+  .handler(async ({ data: id }) => {
+    const [post] = await db.select().from(blog).where(eq(blog.id, id))
+    if (!post) return null
+
+    const relatedPosts = await db.select().from(blog)
+      .where(ne(blog.id, id))
+      .orderBy(desc(blog.createdAt))
+      .limit(2)
+
+    return { post, relatedPosts }
+  })
 
 export const Route = createFileRoute('/blog/$id')({
   component: BlogDetailRoute,
-  loader: ({ params }) => {
-    const post = posts.find((p) => p.id === params.id)
-    if (!post) throw new Error('Post not found')
-    return post
+  loader: async ({ params }) => {
+    const data = await getBlogPostData({ data: params.id })
+    if (!data) throw new Error('Post not found')
+    return data
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.title || 'Blog Post'} — NexonAce Insights` },
-      { name: 'description', content: loaderData?.excerpt || 'Read this post on NexonAce.' }
+      { title: `${loaderData?.post.seoTitle || loaderData?.post.title || 'Blog Post'} — NexonAce Insights` },
+      { name: 'description', content: loaderData?.post.seoDescription || loaderData?.post.excerpt || 'Read this post on NexonAce.' },
+      { property: 'og:title', content: `${loaderData?.post.seoTitle || loaderData?.post.title} — NexonAce Insights` },
+      { property: 'og:description', content: loaderData?.post.seoDescription || loaderData?.post.excerpt },
+      { property: 'og:image', content: loaderData?.post.img },
+      { property: 'og:type', content: 'article' },
+      { name: 'author', content: loaderData?.post.author }
     ]
   })
 })
 
 function BlogDetailRoute() {
-  const post = Route.useLoaderData()
-
-  // Find related posts (just picked from the remaining ones for mockup)
-  const relatedPosts = posts.filter(p => p.id !== post.id).slice(0, 2)
+  const { post, relatedPosts } = Route.useLoaderData()
 
   return (
     <main className="flex flex-col pt-20">
-      ZZZZZZZZZZZZZZZZZZZZZ
       {/* ━━━━━━━━━━━━━━━━ ARTICLE HEADER ━━━━━━━━━━━━━━━━ */}
       <section className="bg-white py-20 pb-10">
         <div className="max-w-3xl mx-auto px-6">
@@ -54,7 +73,7 @@ function BlogDetailRoute() {
               <div>
                 <div className="text-sm font-bold text-[var(--sea-ink)]">{post.author}</div>
                 <div className="text-xs text-[var(--sea-ink-soft)] flex items-center gap-3 mt-1">
-                  <span className="flex items-center gap-1.5"><Calendar size={12} /> {post.date}</span>
+                  <span className="flex items-center gap-1.5"><Calendar size={12} /> {post.createdAt ? new Date(post.createdAt).toLocaleDateString() : ''}</span>
                   <span className="flex items-center gap-1.5"><Clock size={12} /> {post.readTime}</span>
                 </div>
               </div>
@@ -166,7 +185,7 @@ function BlogDetailRoute() {
                     {related.title}
                   </h4>
                   <div className="text-[10px] font-bold text-[var(--sea-ink-soft)] flex items-center gap-3 mt-4">
-                    <span className="flex items-center gap-1.5"><Calendar size={12} /> {related.date}</span>
+                    <span className="flex items-center gap-1.5"><Calendar size={12} /> {related.createdAt ? new Date(related.createdAt).toLocaleDateString() : ''}</span>
                   </div>
                 </div>
               </Link>
