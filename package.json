@@ -8,21 +8,28 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
-    "preview": "vite preview",    
-    "start": "/root/.bun/bin/bun run .output/server/index.mjs"    
+    "preview": "vite preview",
+    "start": "/root/.bun/bin/bun run .output/server/index.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
+    "@tanstack/react-form": "^1.29.0",
     "@tanstack/react-router": "latest",
     "@tanstack/react-router-devtools": "latest",
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "latest",
     "@tanstack/router-plugin": "^1.132.0",
+    "dotenv": "^17.4.1",
+    "drizzle-orm": "^0.45.2",
     "lucide-react": "^0.545.0",
+    "mysql2": "^3.22.0",
+    "nitro": "^3.0.260311-beta",
+    "nitropack": "^2.13.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
@@ -33,6 +40,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.1.4",
+    "drizzle-kit": "^0.31.10",
     "jsdom": "^28.1.0",
     "typescript": "^5.7.2",
     "vite": "^7.3.1",

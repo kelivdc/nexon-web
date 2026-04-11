@@ -1,6 +1,32 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import { Mail, Phone, Globe, Send, MessageCircle, Clock, Shield, MapPin, ArrowRight } from 'lucide-react'
+import { createServerFn } from '@tanstack/react-start'
+import { useState } from 'react'
+import { db } from '../db'
+import { contacts } from '../db/schema'
+import { z } from 'zod'
+
+const contactFormSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  company: z.string().optional(),
+  email: z.string().email('Please enter a valid email address'),
+  budget: z.string().optional(),
+  message: z.string().min(10, 'Project brief must be at least 10 characters long'),
+})
+
+const submitContactForm = createServerFn({ method: 'POST' })
+  .inputValidator((data: unknown) => contactFormSchema.parse(data))
+  .handler(async ({ data }) => {
+    await db.insert(contacts).values({
+      name: data.name,
+      company: data.company || null,
+      email: data.email,
+      budget: data.budget || null,
+      message: data.message,
+    })
+    return { success: true }
+  })
 
 export const Route = createFileRoute('/contact')({
   component: ContactPage,
@@ -15,6 +41,46 @@ export const Route = createFileRoute('/contact')({
 const IMG_bg = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=80&auto=format&fit=crop'
 
 function ContactPage() {
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    setErrors({})
+    
+    const formData = new FormData(e.currentTarget)
+    const rawData = {
+      name: formData.get('name') as string,
+      company: formData.get('company') as string,
+      email: formData.get('email') as string,
+      budget: formData.get('budget') as string,
+      message: formData.get('message') as string,
+    }
+
+    const validation = contactFormSchema.safeParse(rawData)
+    
+    if (!validation.success) {
+      setErrors(validation.error.flatten().fieldErrors)
+      setLoading(false)
+      return
+    }
+
+    try {
+      await submitContactForm({
+        data: validation.data
+      })
+      setSuccess(true)
+      ; (e.target as HTMLFormElement).reset()
+    } catch (err) {
+      console.error(err)
+      alert("Failed to send message. Please try again.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <main className="flex flex-col pt-20">
 
@@ -33,7 +99,7 @@ function ContactPage() {
             <span className="text-xs font-black uppercase tracking-widest text-white/70">Let's Talk</span>
           </div>
           <h1 className="display-title text-5xl font-extrabold md:text-7xl text-white leading-tight mb-8">
-            Have a Project <br/>
+            Have a Project <br />
             <span className="text-[var(--brand-orange)]">In Mind?</span>
           </h1>
           <p className="mx-auto max-w-xl text-xl text-white/60 leading-relaxed">
@@ -50,7 +116,7 @@ function ContactPage() {
           <div>
             <div className="island-kicker mb-5">Contact Information</div>
             <h2 className="display-title text-3xl font-extrabold text-[var(--sea-ink)] mb-6 leading-tight">
-              We're Ready <br/>to <span className="text-[var(--brand-blue)]">Build.</span>
+              We're Ready <br />to <span className="text-[var(--brand-blue)]">Build.</span>
             </h2>
             <p className="text-[var(--sea-ink-soft)] leading-relaxed">
               Whether it's a full custom website, a quick SEO audit, or our Free School Program — we'd love to hear from you.
@@ -89,31 +155,52 @@ function ContactPage() {
         </div>
 
         {/* FORM — right 3/5 */}
-        <div className="lg:col-span-3 bg-white rounded-[3rem] p-10 md:p-14 border border-[var(--line)] shadow-xl">
-          <h3 className="text-2xl font-extrabold text-[var(--sea-ink)] mb-10">Send a Message.</h3>
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <FormField id="name" label="Full Name" placeholder="John Smith" />
-              <FormField id="company" label="Company / School" placeholder="Acme Corp" />
+        <div className="lg:col-span-3 bg-white rounded-[3rem] p-10 md:p-14 border border-[var(--line)] shadow-xl relative overflow-hidden">
+          {success && (
+            <div className="absolute inset-0 z-20 bg-emerald-500 flex flex-col items-center justify-center text-white p-10 text-center rise-in">
+              <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-6">
+                <Send size={32} />
+              </div>
+              <h3 className="text-3xl font-extrabold mb-4">Message Sent!</h3>
+              <p className="text-emerald-100 mb-8 max-w-sm">We've received your request and our team will get back to you within 24 hours.</p>
+              <button
+                onClick={() => setSuccess(false)}
+                className="rounded-full bg-white px-8 py-3 text-sm font-bold uppercase tracking-widest text-emerald-600 shadow-xl transition-all hover:scale-105 active:scale-95"
+              >
+                Send Another
+              </button>
             </div>
-            <FormField id="email" label="Email Address" placeholder="john@company.com" type="email" />
-            <FormField id="budget" label="Estimated Budget (USD)" placeholder="e.g. $500 – $2,000" />
+          )}
+
+          <h3 className="text-2xl font-extrabold text-[var(--sea-ink)] mb-10">Send a Message.</h3>
+          <form className="space-y-6 relative" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <FormField id="name" name="name" label="Full Name" placeholder="John Smith" required error={errors.name?.[0]} />
+              <FormField id="company" name="company" label="Company / School" placeholder="Acme Corp" error={errors.company?.[0]} />
+            </div>
+            <FormField id="email" name="email" label="Email Address" placeholder="john@company.com" type="email" required error={errors.email?.[0]} />
+            <FormField id="budget" name="budget" label="Estimated Budget (USD)" placeholder="e.g. $500 – $2,000" error={errors.budget?.[0]} />
             <div className="space-y-2">
               <label htmlFor="message" className="block text-[10px] font-black uppercase tracking-widest text-[var(--sea-ink-soft)]">
                 Project Brief
               </label>
               <textarea
                 id="message"
+                name="message"
                 rows={6}
-                className="w-full rounded-3xl border border-[var(--line)] bg-[var(--foam)] px-7 py-5 text-sm outline-none transition-all focus:border-[var(--brand-blue)] focus:ring-2 focus:ring-[var(--brand-blue)]/10 resize-none placeholder:text-[var(--sea-ink-soft)]/40 font-medium"
+                required
+                className={`w-full rounded-3xl border ${errors.message ? 'border-red-500 focus:border-red-500 focus:ring-red-500/10' : 'border-[var(--line)] focus:border-[var(--brand-blue)] focus:ring-[var(--brand-blue)]/10'} bg-[var(--foam)] px-7 py-5 text-sm outline-none transition-all focus:ring-2 resize-none placeholder:text-[var(--sea-ink-soft)]/40 font-medium`}
                 placeholder="Tell us about your project — what you're building, who it's for, and what success looks like..."
               />
+              {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message[0]}</p>}
             </div>
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-3 rounded-3xl bg-[var(--brand-blue)] py-5 text-sm font-bold uppercase tracking-widest text-white shadow-xl transition-all hover:bg-[var(--brand-orange)] hover:shadow-[0_20px_50px_-10px_var(--brand-orange)] active:scale-95"
+              disabled={loading}
+              className={`w-full inline-flex items-center justify-center gap-3 rounded-3xl bg-[var(--brand-blue)] py-5 text-sm font-bold uppercase tracking-widest text-white shadow-xl transition-all hover:bg-[var(--brand-orange)] hover:shadow-[0_20px_50px_-10px_var(--brand-orange)] active:scale-95 ${loading ? 'opacity-70 pointer-events-none' : ''}`}
             >
-              <Send size={18} /> Send Application
+              {loading ? <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" /> : <Send size={18} />}
+              {loading ? 'Sending...' : 'Send Application'}
             </button>
             <p className="text-center text-xs text-[var(--sea-ink-soft)] opacity-50">
               We'll respond within 24 hours. All inquiries are confidential.
@@ -145,7 +232,7 @@ function ContactPage() {
       <section className="page-wrap py-20 pb-32">
         <div className="island-shell rounded-[3rem] p-12 md:p-20 text-center">
           <h3 className="display-title text-3xl font-extrabold text-[var(--sea-ink)] mb-6">
-            Not ready to commit? <br/>Explore our <span className="text-[var(--brand-orange)]">Design Themes</span>.
+            Not ready to commit? <br />Explore our <span className="text-[var(--brand-orange)]">Design Themes</span>.
           </h3>
           <Link
             to="/themes-gallery"
@@ -160,7 +247,7 @@ function ContactPage() {
   )
 }
 
-function FormField({ id, label, placeholder, type = 'text' }: { id: string, label: string, placeholder: string, type?: string }) {
+function FormField({ id, name, label, placeholder, type = 'text', required = false, error }: { id: string, name?: string, label: string, placeholder: string, type?: string, required?: boolean, error?: string }) {
   return (
     <div className="space-y-2">
       <label htmlFor={id} className="block text-[10px] font-black uppercase tracking-widest text-[var(--sea-ink-soft)]">
@@ -168,10 +255,13 @@ function FormField({ id, label, placeholder, type = 'text' }: { id: string, labe
       </label>
       <input
         id={id}
+        name={name || id}
         type={type}
+        required={required}
         placeholder={placeholder}
-        className="w-full rounded-2xl border border-[var(--line)] bg-[var(--foam)] px-6 py-4 text-sm outline-none transition-all focus:border-[var(--brand-blue)] focus:ring-2 focus:ring-[var(--brand-blue)]/10 placeholder:text-[var(--sea-ink-soft)]/40 font-medium"
+        className={`w-full rounded-2xl border ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500/10' : 'border-[var(--line)] focus:border-[var(--brand-blue)] focus:ring-[var(--brand-blue)]/10'} bg-[var(--foam)] px-6 py-4 text-sm outline-none transition-all focus:ring-2 placeholder:text-[var(--sea-ink-soft)]/40 font-medium`}
       />
+      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
     </div>
   )
 }
