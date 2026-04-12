@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { Calendar, Clock, User, ArrowLeft, Share2, Twitter, Linkedin, Facebook } from 'lucide-react'
 import { createServerFn } from '@tanstack/react-start'
 import { z } from 'zod'
@@ -24,9 +24,26 @@ export const Route = createFileRoute('/blog/$id')({
   component: BlogDetailRoute,
   loader: async ({ params }) => {
     const data = await getBlogPostData({ data: params.id })
-    if (!data) throw new Error('Post not found')
+    if (!data) throw notFound()
     return data
   },
+  notFoundComponent: () => (
+    <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-6 py-20">
+      <div className="max-w-md w-full bg-[var(--foam)] rounded-3xl p-10 border border-[var(--line)]">
+        <div className="text-8xl font-black text-[var(--brand-blue)] mb-2 opacity-50">404</div>
+        <h1 className="display-title text-3xl font-extrabold text-[var(--sea-ink)] mb-4">Article Not Found</h1>
+        <p className="text-[var(--sea-ink-soft)] text-lg mb-8 leading-relaxed">
+          We couldn't find the article you were looking for. It might have been removed or the URL is incorrect.
+        </p>
+        <Link 
+          to="/blog" 
+          className="inline-flex items-center justify-center gap-2 bg-[var(--brand-blue)] text-white px-8 py-4 rounded-full font-bold hover:bg-[var(--brand-orange)] transition-colors shadow-lg hover:shadow-xl w-full"
+        >
+          <ArrowLeft size={18} /> Browse Our Blog
+        </Link>
+      </div>
+    </div>
+  ),
   head: ({ loaderData }) => ({
     meta: [
       { title: `${loaderData?.post.seoTitle || loaderData?.post.title || 'Blog Post'} — NexonAce Insights` },
