@@ -17,12 +17,12 @@ export const Route = createFileRoute('/')({
 
 // ─── Brand-consistent Unsplash images ──────────────────────────────
 const IMG = {
-  hero:      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&q=80&auto=format&fit=crop',
+  hero: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&q=80&auto=format&fit=crop',
   dashboard: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop',
-  team:      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
-  school:    'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80&auto=format&fit=crop',
-  office:    'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop',
-  coding:    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&auto=format&fit=crop',
+  team: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
+  school: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80&auto=format&fit=crop',
+  office: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop',
+  coding: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&auto=format&fit=crop',
 }
 
 function LandingPage() {
@@ -44,7 +44,7 @@ function LandingPage() {
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--brand-blue)]/20 bg-[var(--brand-blue)]/5 px-5 py-2">
               <span className="flex h-2 w-2 rounded-full bg-[var(--brand-orange)] shadow-[0_0_8px_var(--brand-orange)]" />
               <span className="text-xs font-black uppercase tracking-widest text-[var(--brand-blue)]">
-                Global IT Partner · Est. 2026
+                Web Design & Development for SaaS & B2B Companies
               </span>
             </div>
 
@@ -65,7 +65,7 @@ function LandingPage() {
             <div className="flex flex-wrap gap-5 mb-16">
               <Link
                 to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-orange)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-[0_12px_40px_-8px_var(--brand-orange)] transition-all hover:scale-105 hover:shadow-[0_20px_50px_-8px_var(--brand-orange)] active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-orange)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-[0_12px_40px_-8px_var(--brand-orange)] transition-all hover:scale-105 hover:shadow-[0_20px_50px_-8px_var(--brand-orange)] active:scale-95"
                 style={{ color: 'white' }}
               >
                 Start Your Project <ArrowRight size={16} />
@@ -75,9 +75,9 @@ function LandingPage() {
             {/* Social proof strip */}
             <div className="flex flex-wrap items-center gap-8">
               {[
-                { icon: <Star size={14} className="text-yellow-500" fill="currentColor" />, text: '5.0 Rating' },
-                { icon: <Award size={14} className="text-[var(--brand-blue)]" />, text: '100+ Projects' },
-                { icon: <Users size={14} className="text-[var(--brand-orange)]" />, text: '50+ Global Clients' },
+                { icon: <Star size={14} className="text-yellow-500" fill="currentColor" />, text: '4.8 Rating' },
+                { icon: <Award size={14} className="text-[var(--brand-blue)]" />, text: '25+ Projects' },
+                { icon: <Users size={14} className="text-[var(--brand-orange)]" />, text: '25 Global Clients' },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm font-bold text-[var(--sea-ink-soft)]">
                   {item.icon} {item.text}
@@ -143,7 +143,7 @@ function LandingPage() {
         <div className="mb-20 max-w-2xl">
           <div className="island-kicker mb-5">What we do</div>
           <h2 className="display-title text-4xl font-extrabold md:text-5xl text-[var(--sea-ink)] leading-tight">
-            End-to-End Digital <br/>
+            End-to-End Digital <br />
             <span className="text-[var(--brand-orange)]">Growth Solutions.</span>
           </h2>
         </div>
@@ -208,7 +208,7 @@ function LandingPage() {
           <div>
             <div className="island-kicker mb-5">Why NexonAce</div>
             <h2 className="display-title text-4xl font-extrabold md:text-5xl text-[var(--sea-ink)] leading-tight mb-8">
-              Enterprise Quality. <br/>
+              Enterprise Quality. <br />
               <span className="text-[var(--brand-orange)]">Startup Agility.</span>
             </h2>
             <p className="text-[var(--sea-ink-soft)] text-lg leading-relaxed mb-12">
@@ -256,7 +256,7 @@ function LandingPage() {
                 Social Impact · Campaign 2026
               </div>
               <h2 className="display-title text-4xl font-extrabold md:text-6xl text-white leading-tight mb-8">
-                Free Websites <br/>
+                Free Websites <br />
                 <span className="text-[var(--brand-orange)]">For Schools.</span>
               </h2>
               <p className="text-blue-100/80 text-lg leading-relaxed mb-10 max-w-lg">
@@ -336,7 +336,7 @@ function LandingPage() {
           <div className="relative z-10 p-16 md:p-28 text-center">
             <div className="island-kicker mb-6">Your Growth Starts Here</div>
             <h2 className="display-title text-5xl font-extrabold md:text-7xl text-[var(--sea-ink)] leading-tight mb-8">
-              Let's Build Something <br/>
+              Let's Build Something <br />
               <span className="text-[var(--brand-orange)]">Extraordinary.</span>
             </h2>
             <p className="mx-auto mb-12 max-w-xl text-xl text-[var(--sea-ink-soft)]">
@@ -362,11 +362,10 @@ function LandingPage() {
 
 function ServiceCard({ img, icon, title, desc, tags, featured = false }: any) {
   return (
-    <div className={`group flex flex-col rounded-[2.5rem] overflow-hidden border transition-all hover:-translate-y-2 hover:shadow-2xl ${
-      featured
-        ? 'border-[var(--brand-orange)]/40 shadow-lg shadow-[var(--brand-orange)]/10'
-        : 'border-[var(--line)] bg-white'
-    }`}>
+    <div className={`group flex flex-col rounded-[2.5rem] overflow-hidden border transition-all hover:-translate-y-2 hover:shadow-2xl ${featured
+      ? 'border-[var(--brand-orange)]/40 shadow-lg shadow-[var(--brand-orange)]/10'
+      : 'border-[var(--line)] bg-white'
+      }`}>
       {/* Card image */}
       <div className="relative h-52 overflow-hidden">
         <img
