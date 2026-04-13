@@ -74,6 +74,15 @@ a.btn-cta-blue:hover {
   color: white !important;
 }
 
+/* Nav links in transparent header — override global `a` color */
+header:not(.header-scrolled) a.nav-link-light {
+  color: rgba(255, 255, 255, 0.85);
+}
+header:not(.header-scrolled) a.nav-link-light:hover,
+header:not(.header-scrolled) a.nav-link-light.is-active {
+  color: #ffffff;
+}
+
 /* ─── Layout ───────────────────────────────────────────────────── */
 .page-wrap {
   width: min(1100px, calc(100% - 3rem));
