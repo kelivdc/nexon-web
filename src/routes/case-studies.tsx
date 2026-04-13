@@ -1,207 +1,185 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import {
-  ArrowRight, ArrowUpRight, TrendingUp, Clock, Users, Zap,
-  ShoppingCart, BarChart3, GraduationCap, Wallet,
-  CheckCircle2, Target, Layers, Globe, Star, Quote,
+  ArrowRight, ArrowUpRight, TrendingUp, Zap,
+  ShoppingCart, BarChart3, Wallet, Lightbulb,
+  CheckCircle2, Target, Layers, Globe, Eye, Cpu, Sparkles,
+  Search, PenTool, Layout, Code2, Rocket, MessageCircle,
+  UserCheck, Handshake, Timer, ShieldCheck,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/case-studies')({
   component: CaseStudiesPage,
   head: () => ({
     meta: [
-      { title: 'Case Studies — NexonAce | Real Results, Real Growth' },
-      { name: 'description', content: 'Explore how NexonAce helped global businesses solve complex digital challenges and achieve measurable growth through premium web development.' },
+      { title: 'Selected Work & Concept Projects — NexonAce' },
+      { name: 'description', content: 'Explore concept projects, redesigns, and internal builds that showcase NexonAce\'s thinking, process, and quality standards in web design & development.' },
     ],
   }),
 })
 
-// ─── Case Study Data ────────────────────────────────────────────────
-const caseStudies = [
+// ─── Project Data (Concept Work) ────────────────────────────────────
+const projects = [
   {
     id: 'swiftcart',
-    category: 'E-Commerce',
-    client: 'SwiftCart Global',
-    title: 'Turning Cart Abandonment Into a 340% Revenue Surge',
-    excerpt: 'SwiftCart was bleeding revenue with a 78% cart abandonment rate. We rebuilt their entire checkout flow and storefront — transforming a sluggish, outdated e-commerce site into a conversion machine.',
+    category: 'SaaS Landing Page',
+    label: 'Concept Project',
+    title: 'SaaS E-Commerce Platform — Redesigned for Conversion',
+    excerpt: 'A concept redesign exploring how a modern e-commerce SaaS platform could reduce cart abandonment through a streamlined single-page checkout, headless architecture, and mobile-first UX patterns.',
     image: '/case-ecommerce.png',
     icon: <ShoppingCart size={22} />,
     color: 'var(--brand-orange)',
     colorLight: 'var(--brand-orange-light)',
     problem: {
-      title: 'The Challenge',
-      description: 'SwiftCart\'s legacy e-commerce platform suffered from painfully slow page loads (6.2s average), a confusing multi-step checkout, and zero mobile optimization. Their conversion rate had dropped to 0.9% — well below the industry average of 2.86%. Customers were abandoning carts at an alarming rate, and organic search traffic was declining 15% month-over-month due to poor Core Web Vitals scores.',
+      title: 'The Problem We Explored',
+      description: 'Most e-commerce platforms still rely on multi-step checkout flows that create friction. With average cart abandonment rates above 70% industry-wide, we explored how a conversion-first redesign could transform the buyer experience — from landing page to confirmation.',
       points: [
-        '78% cart abandonment rate across all product categories',
-        '6.2 second average page load time on mobile devices',
-        'Zero mobile-responsive design — 60% of traffic was mobile',
-        'Outdated search with no filtering, leading to high bounce rates',
+        'Multi-step checkout flows causing 70%+ abandonment industry-wide',
+        'Slow page loads (5s+ average) destroying mobile conversion rates',
+        'Generic product pages with zero personalization or smart recommendations',
+        'Poor Core Web Vitals scores hurting organic search visibility',
       ],
     },
     solution: {
-      title: 'Our Approach',
-      description: 'We conducted a full UX audit, rebuilt the storefront from scratch with a React-based headless architecture, and engineered a single-page checkout flow with intelligent autofill and real-time shipping calculations. Every pixel was designed to reduce friction and build buyer confidence.',
+      title: 'Our Design Approach',
+      description: 'We designed a headless storefront concept using React and Next.js, featuring a single-page checkout with smart autofill, real-time shipping estimations, and AI-style product recommendations. Every design choice was driven by conversion psychology and performance benchmarks.',
       points: [
-        'Headless commerce architecture with React + Next.js for sub-second loads',
-        'Single-page checkout with smart address autofill and payment optimization',
-        'AI-powered product recommendations increasing average order value by 45%',
+        'Headless architecture concept achieving sub-second load times in prototyping',
+        'Single-page checkout designed to reduce abandonment by eliminating friction',
+        'Smart product recommendation UI increasing average order value potential',
         'Mobile-first responsive design tested across 30+ device configurations',
       ],
     },
-    results: [
-      { value: '340%', label: 'Revenue Increase', icon: <TrendingUp size={18} /> },
-      { value: '0.8s', label: 'Page Load Time', icon: <Zap size={18} /> },
-      { value: '4.2%', label: 'Conversion Rate', icon: <Target size={18} /> },
-      { value: '52%', label: 'Lower Bounce Rate', icon: <BarChart3 size={18} /> },
+    metrics: [
+      { value: '<1s', label: 'Target Load Time' },
+      { value: '1-step', label: 'Checkout Flow' },
+      { value: '30+', label: 'Devices Tested' },
+      { value: '98', label: 'Lighthouse Score' },
     ],
-    testimonial: {
-      quote: 'NexonAce didn\'t just redesign our website — they fundamentally changed how we sell online. The results exceeded every projection we had.',
-      author: 'Marcus Chen',
-      role: 'CEO, SwiftCart Global',
-    },
-    tags: ['E-Commerce', 'React', 'Headless CMS', 'UX Redesign', 'Performance'],
-    duration: '6 weeks',
-    year: '2025',
+    tags: ['E-Commerce', 'React', 'Next.js', 'UX Redesign', 'Performance'],
+    scope: 'Full redesign concept',
   },
   {
     id: 'growthhub',
-    category: 'SaaS Platform',
-    client: 'GrowthHub Analytics',
-    title: 'From Startup MVP to 12,000+ Active Users in 90 Days',
-    excerpt: 'GrowthHub had a powerful analytics engine but an underwhelming interface that drove users away. We designed and built a dashboard experience that users genuinely love — and tell their colleagues about.',
+    category: 'Fintech Dashboard',
+    label: 'Concept Project',
+    title: 'Analytics Dashboard — From Data Overload to Actionable Insight',
+    excerpt: 'An internal build exploring how SaaS analytics dashboards can move beyond spreadsheet-style tables toward intuitive, drag-and-drop widget systems with real-time data visualization.',
     image: '/case-saas.png',
     icon: <BarChart3 size={22} />,
     color: 'var(--brand-blue)',
     colorLight: 'var(--brand-blue-light)',
     problem: {
-      title: 'The Challenge',
-      description: 'GrowthHub had invested heavily into their analytics engine, but their MVP dashboard felt like a spreadsheet from 2005. User onboarding took an average of 45 minutes, the churn rate was 38% within the first month, and NPS was a disastrous -12. Investors were concerned, and the founding team needed a radical UI/UX transformation — fast.',
+      title: 'The Problem We Explored',
+      description: 'Most SaaS dashboards overwhelm users with raw data and complex navigation. New users churn because time-to-value is too long, onboarding is confusing, and there\'s no clear path to the "aha moment." We explored how to make complex analytics feel effortless.',
       points: [
-        '38% churn rate within the first 30 days of sign-up',
-        'Average onboarding time of 45 minutes with zero guided workflow',
-        'NPS score of -12 causing investor concerns about product-market fit',
-        'Data visualization was limited to basic tables — no charts, no insights',
+        'Average SaaS dashboard takes 30+ minutes to set up — most users give up',
+        'Data tables with no visual hierarchy make insights impossible to find',
+        'No guided onboarding means users don\'t discover key features',
+        'One-size-fits-all layouts that ignore different user roles and needs',
       ],
     },
     solution: {
-      title: 'Our Approach',
-      description: 'We embedded with the GrowthHub team for a 3-week discovery sprint. We rebuilt the entire dashboard UI with an intuitive drag-and-drop widget system, real-time data visualization, and an AI-powered onboarding assistant that reduced time-to-value from 45 minutes to under 3 minutes.',
+      title: 'Our Design Approach',
+      description: 'We built a concept dashboard with drag-and-drop customizable widgets, interactive charts, and a role-based onboarding flow designed to reduce time-to-value to under 3 minutes. The UI was designed to make data feel like stories, not spreadsheets.',
       points: [
-        'Complete dashboard rebuild with drag-and-drop customizable widgets',
-        'Real-time data visualization with interactive charts, heatmaps, and funnels',
-        'AI onboarding assistant reducing setup time from 45 min to under 3 min',
-        'Role-based access control and white-label capability for enterprise clients',
+        'Drag-and-drop widget system letting users build their own views',
+        'Interactive data visualization with charts, heatmaps, and funnels',
+        'Guided onboarding flow designed to deliver value in under 3 minutes',
+        'Role-based layouts adapting the UI to different user personas',
       ],
     },
-    results: [
-      { value: '12K+', label: 'Active Users', icon: <Users size={18} /> },
-      { value: '3 min', label: 'Onboarding Time', icon: <Clock size={18} /> },
-      { value: '+67', label: 'NPS Score', icon: <Star size={18} /> },
-      { value: '8%', label: 'Monthly Churn', icon: <TrendingUp size={18} /> },
+    metrics: [
+      { value: '<3 min', label: 'Target Onboarding' },
+      { value: 'Drag & Drop', label: 'Custom Widgets' },
+      { value: 'WCAG AA', label: 'Accessibility' },
+      { value: 'Dark + Light', label: 'Theme Support' },
     ],
-    testimonial: {
-      quote: 'Our users went from confused to delighted. NexonAce turned our data into stories. Our Series A was closed partly because investors loved the new experience.',
-      author: 'Sarah Okafor',
-      role: 'CTO, GrowthHub Analytics',
-    },
-    tags: ['SaaS', 'Dashboard', 'Data Visualization', 'AI', 'React'],
-    duration: '8 weeks',
-    year: '2025',
+    tags: ['SaaS', 'Dashboard', 'Data Viz', 'React', 'UX Design'],
+    scope: 'Full UI/UX concept',
   },
   {
-    id: 'acornacademy',
-    category: 'Education / CSR',
-    client: 'Acorn Academy Network',
-    title: 'Empowering 15 Schools With Free Digital Presence',
-    excerpt: 'As part of our CSR mission, we partnered with Acorn Academy — a network of underfunded schools — to give them a professional web presence that boosted enrollment by 280%.',
+    id: 'corporaterebuild',
+    category: 'Corporate Website',
+    label: 'Concept Project',
+    title: 'Corporate Website — Turning a Brochure Site Into a Growth Engine',
+    excerpt: 'A redesign concept showing how a dated corporate website could be transformed into a modern, SEO-optimized platform that generates leads, builds authority, and actually converts visitors into qualified inquiries.',
     image: '/case-school.png',
-    icon: <GraduationCap size={22} />,
+    icon: <Globe size={22} />,
     color: '#10b981',
     colorLight: '#ecfdf5',
     problem: {
-      title: 'The Challenge',
-      description: 'Acorn Academy\'s 15 affiliated schools had no online presence — not even a basic website. Parents had no way to research schools before enrollment, student registration was paper-only, and important school announcements were limited to printed flyers. In an increasingly digital world, these schools were invisible — and enrollment was declining 20% year-over-year.',
+      title: 'The Problem We Explored',
+      description: 'Corporate websites are often treated as digital brochures — static, slow, and ignored after launch. They rank poorly because they were never built with SEO in mind. They don\'t convert because they speak to the company, not the customer\'s problems. We explored what a results-driven rebuild looks like.',
       points: [
-        'Zero online presence across all 15 schools in the network',
-        'Paper-only registration process causing a 3-week enrollment delay',
-        'No way for parents to access grades, schedules, or announcements digitally',
-        '20% year-over-year enrollment decline due to lack of discoverability',
+        'Static "brochure" websites with no conversion strategy or lead capture',
+        'Zero SEO foundation — no structured data, poor content hierarchy, slow loads',
+        'Content that talks about the company instead of solving visitor problems',
+        'No analytics or tracking to understand what\'s working and what\'s not',
       ],
     },
     solution: {
-      title: 'Our Approach',
-      description: 'We built a multi-tenant school platform that could be white-labeled for each school in the network. Each school received a customized, SEO-optimized website with online registration, a news hub, gallery, and a parent portal — all managed through a single admin dashboard that non-technical school staff could operate with ease.',
+      title: 'Our Design Approach',
+      description: 'We designed a conversion-focused corporate platform with modular page sections, integrated lead capture, structured FAQ schemas for SEO, and a content strategy that positions the company as a trusted authority. Every section earns its place on the page.',
       points: [
-        'Multi-tenant platform with unique branding per school — deployed in 3 days each',
-        'Online enrollment system reducing registration time from 3 weeks to 10 minutes',
-        'Parent portal with real-time grade tracking, attendance, and announcements',
-        'SEO-optimized content bringing 5,000+ monthly organic visitors across the network',
+        'Modular, component-based page design for easy content management',
+        'Integrated lead capture with smart forms and CTA optimization',
+        'Structured data and technical SEO built into the architecture from day one',
+        'Performance-first build targeting 95+ Lighthouse scores across all pages',
       ],
     },
-    results: [
-      { value: '280%', label: 'Enrollment Increase', icon: <TrendingUp size={18} /> },
-      { value: '15', label: 'Schools Launched', icon: <Globe size={18} /> },
-      { value: '10 min', label: 'Registration Time', icon: <Clock size={18} /> },
-      { value: '5K+', label: 'Monthly Visitors', icon: <Users size={18} /> },
+    metrics: [
+      { value: '95+', label: 'Lighthouse Target' },
+      { value: 'SEO-First', label: 'Architecture' },
+      { value: 'Modular', label: 'Component System' },
+      { value: 'Multi-CTA', label: 'Lead Capture' },
     ],
-    testimonial: {
-      quote: 'NexonAce gave our schools a voice in the digital world — for free. Parents can now find us, register online, and stay connected. Enrollment is at an all-time high.',
-      author: 'Dr. Amina Rashid',
-      role: 'Director, Acorn Academy Network',
-    },
-    tags: ['Education', 'Multi-tenant', 'CSR', 'SEO', 'Portal'],
-    duration: '10 weeks',
-    year: '2026',
+    tags: ['Corporate', 'SEO', 'Lead Gen', 'Responsive', 'CMS'],
+    scope: 'Strategic redesign concept',
   },
   {
     id: 'finanzaglobal',
-    category: 'FinTech',
-    client: 'Finanza Global',
-    title: 'Rebuilding Trust With a Secure, Lightning-Fast Payments Platform',
-    excerpt: 'Finanza Global\'s outdated payment gateway was losing merchants due to downtime and slow settlement. We engineered a modern, bank-grade platform that processes $2M+ daily with 99.99% uptime.',
+    category: 'Startup Marketing',
+    label: 'Concept Project',
+    title: 'Fintech Launch Site — Building Trust Before the First Transaction',
+    excerpt: 'A concept exploring how a new fintech startup could establish credibility and trust through design — from transparent pricing UIs to security-first merchant dashboards that make complexity feel simple.',
     image: '/case-fintech.png',
     icon: <Wallet size={22} />,
     color: '#8b5cf6',
     colorLight: '#f5f3ff',
     problem: {
-      title: 'The Challenge',
-      description: 'Finanza Global\'s legacy payment platform was built on aging infrastructure with frequent outages (99.2% uptime — far below the 99.99% industry standard). Merchants were churning at 12% monthly because of failed transactions, slow settlement times (T+5 days), and a clunky merchant dashboard that required support calls for basic operations.',
+      title: 'The Problem We Explored',
+      description: 'Fintech startups face a unique challenge: they need users to trust them with money before they have a track record. Most fintech sites rely on generic claims like "secure" and "fast" without showing what that actually looks like. We explored how design itself can build trust.',
       points: [
-        '99.2% uptime causing 4+ hours of downtime per month during peak hours',
-        'Settlement time of T+5 days — 3x slower than competitor platforms',
-        '12% monthly merchant churn due to failed transactions and poor UX',
-        'No mobile app — merchants couldn\'t track payments on the go',
+        'Generic "we\'re secure" copy that doesn\'t build real user confidence',
+        'Complex financial data presented in ways that confuse instead of inform',
+        'No mobile experience — users can\'t manage their money on the go',
+        'Dark patterns and hidden fees eroding trust across the industry',
       ],
     },
     solution: {
-      title: 'Our Approach',
-      description: 'We redesigned the entire merchant experience — from the web dashboard to a new mobile app — while the backend team re-architected the payment pipeline. Our focus was on building trust through transparency: real-time transaction monitoring, instant settlement notifications, and a fraud detection UI that merchants could understand at a glance.',
+      title: 'Our Design Approach',
+      description: 'We designed a fintech platform concept prioritizing radical transparency — real-time transaction monitoring, clear fee breakdowns, and a mobile-first companion app. The design language was crafted to feel premium, trustworthy, and effortlessly simple.',
       points: [
-        'Modern merchant dashboard with real-time transaction monitoring and analytics',
-        'Mobile-first companion app with push notifications for every settlement',
-        'Interactive fraud detection interface making security transparent and actionable',
-        'Responsive design with dark mode and accessibility compliance (WCAG 2.1 AA)',
+        'Trust-first design language with transparent pricing and clear fee structures',
+        'Real-time dashboard with transaction monitoring and instant notifications',
+        'Mobile-first companion app designed for on-the-go financial management',
+        'Dark mode, accessibility compliance (WCAG 2.1 AA), and responsive design',
       ],
     },
-    results: [
-      { value: '$2M+', label: 'Daily Volume', icon: <TrendingUp size={18} /> },
-      { value: '99.99%', label: 'Uptime', icon: <Zap size={18} /> },
-      { value: '2%', label: 'Merchant Churn', icon: <Users size={18} /> },
-      { value: 'T+1', label: 'Settlement Speed', icon: <Clock size={18} /> },
+    metrics: [
+      { value: 'Mobile-First', label: 'Design Approach' },
+      { value: 'WCAG 2.1', label: 'Accessibility' },
+      { value: 'Real-time', label: 'Data Updates' },
+      { value: 'Dark + Light', label: 'Theme Modes' },
     ],
-    testimonial: {
-      quote: 'Our merchants used to call support daily. Now they manage everything from their phone. NexonAce understood fintech — they built something our users trust implicitly.',
-      author: 'David Hartono',
-      role: 'VP Product, Finanza Global',
-    },
-    tags: ['FinTech', 'Payments', 'Mobile App', 'Security', 'Dashboard'],
-    duration: '12 weeks',
-    year: '2025',
+    tags: ['FinTech', 'Startup', 'Mobile App', 'Trust Design', 'Dashboard'],
+    scope: 'Launch concept & design system',
   },
 ]
 
 // ─── Filter Categories ──────────────────────────────────────────────
-const categories = ['All', ...Array.from(new Set(caseStudies.map(cs => cs.category)))]
+const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))]
 
 // ─── Main Page Component ────────────────────────────────────────────
 function CaseStudiesPage() {
@@ -209,15 +187,14 @@ function CaseStudiesPage() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   const filtered = activeFilter === 'All'
-    ? caseStudies
-    : caseStudies.filter(cs => cs.category === activeFilter)
+    ? projects
+    : projects.filter(p => p.category === activeFilter)
 
   return (
     <main className="flex flex-col">
 
       {/* ━━━━━━ HERO ━━━━━━ */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-[var(--sea-ink)]">
-        {/* Background effects */}
+      <section className="relative pt-32 pb-24 overflow-hidden bg-[var(--sea-ink)]">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,102,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,102,0,0.04)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--brand-orange)] opacity-[0.06] rounded-full blur-[150px]" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[var(--brand-blue)] opacity-[0.08] rounded-full blur-[120px]" />
@@ -226,33 +203,71 @@ function CaseStudiesPage() {
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-sm rise-in">
             <span className="flex h-2 w-2 rounded-full bg-[var(--brand-orange)] shadow-[0_0_8px_var(--brand-orange)]" />
             <span className="text-xs font-black uppercase tracking-widest text-white/70">
-              Proven Results · Real Impact
+              Portfolio & Concept Work
             </span>
           </div>
 
           <h1 className="display-title text-5xl font-extrabold leading-[1.08] md:text-6xl lg:text-7xl text-white mb-8 rise-in rise-in-2">
-            Case Studies That{' '}
-            <span className="text-[var(--brand-orange)]">Speak</span>{' '}
+            Selected Work &{' '}
             <br className="hidden lg:block" />
-            For Themselves.
+            <span className="text-[var(--brand-orange)]">Concept Projects.</span>
           </h1>
 
-          <p className="max-w-2xl text-lg leading-relaxed text-white/50 mb-12 rise-in rise-in-3">
-            Every project begins with a problem. Here's how we turned real challenges
-            into measurable results for global businesses, startups, and institutions.
+          <p className="max-w-2xl text-lg leading-relaxed text-white/50 mb-6 rise-in rise-in-3">
+            We're a young agency, but not beginners. These projects showcase our thinking,
+            process, and quality standards through concept work, redesigns, and internal builds.
           </p>
 
-          {/* Stats row */}
-          <div className="flex flex-wrap gap-12 rise-in rise-in-3">
+          {/* Trust note */}
+          <p className="max-w-xl text-xs text-white/25 mb-14 rise-in rise-in-3 leading-relaxed">
+            All projects shown are independent or concept work and not affiliated with any
+            brands mentioned. They represent our design process and development capabilities.
+          </p>
+
+          {/* CTA */}
+          <div className="rise-in rise-in-3">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-orange)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-[0_12px_40px_-8px_var(--brand-orange)] transition-all hover:scale-105 hover:shadow-[0_20px_50px_-8px_var(--brand-orange)] active:scale-95"
+              style={{ color: 'white' }}
+            >
+              Start a Project <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━ WHY CONCEPT WORK ━━━━━━ */}
+      <section className="page-wrap py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <div className="island-kicker mb-5">Honest by design</div>
+            <h2 className="display-title text-4xl font-extrabold md:text-5xl text-[var(--sea-ink)] leading-tight mb-6">
+              Proof of Thinking,{' '}
+              <br className="hidden md:block" />
+              <span className="text-[var(--brand-orange)]">Not Empty Claims.</span>
+            </h2>
+            <p className="text-[var(--sea-ink-soft)] text-lg leading-relaxed mb-8">
+              New agencies don't have years of public client work to showcase — and we won't pretend otherwise. Instead of filling this page with generic claims, we show real execution. Every concept project below follows the exact same process, quality standards, and strategic thinking we bring to paying client work.
+            </p>
+            <p className="text-[var(--sea-ink-soft)] text-base leading-relaxed">
+              We believe showing how we think is more valuable than any logo wall.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
-              { value: '25+', label: 'Projects Delivered' },
-              { value: '340%', label: 'Avg. Growth' },
-              { value: '4.9★', label: 'Client Rating' },
-              { value: '100%', label: 'On-Time Delivery' },
-            ].map(stat => (
-              <div key={stat.label}>
-                <div className="text-3xl font-black text-[var(--brand-orange)]">{stat.value}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mt-1">{stat.label}</div>
+              { icon: <Eye size={22} className="text-[var(--brand-orange)]" />, title: 'UX & Conversion Thinking', desc: 'Every design decision is driven by user behavior and business goals, not aesthetics alone.' },
+              { icon: <Zap size={22} className="text-[var(--brand-blue)]" />, title: 'Performance Optimization', desc: 'We obsess over load times, Core Web Vitals, and the metrics that actually impact your bottom line.' },
+              { icon: <Cpu size={22} className="text-emerald-500" />, title: 'Scalable Development', desc: 'Clean, modular code built with modern frameworks — ready to grow with your business.' },
+              { icon: <Target size={22} className="text-purple-500" />, title: 'Real-World Problem Solving', desc: 'We start with the problem, not the technology. Strategy first, then execution.' },
+            ].map(item => (
+              <div key={item.title} className="bg-[var(--foam)] rounded-[2rem] p-7 border border-[var(--line)] hover:border-[var(--brand-orange)]/20 hover:-translate-y-1 transition-all duration-300 group">
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-5 shadow-sm group-hover:shadow-md transition-shadow">
+                  {item.icon}
+                </div>
+                <h3 className="font-extrabold text-[var(--sea-ink)] mb-2 text-sm">{item.title}</h3>
+                <p className="text-xs text-[var(--sea-ink-soft)] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -278,22 +293,111 @@ function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* ━━━━━━ CASE STUDIES LIST ━━━━━━ */}
+      {/* ━━━━━━ PROJECT CARDS ━━━━━━ */}
       <section className="page-wrap py-20">
         <div className="flex flex-col gap-32">
-          {filtered.map((cs, index) => (
-            <CaseStudyCard
-              key={cs.id}
-              study={cs}
+          {filtered.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
               index={index}
-              isExpanded={expandedId === cs.id}
-              onToggle={() => setExpandedId(expandedId === cs.id ? null : cs.id)}
+              isExpanded={expandedId === project.id}
+              onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)}
             />
           ))}
         </div>
       </section>
 
-      {/* ━━━━━━ CTA SECTION ━━━━━━ */}
+      {/* ━━━━━━ PROCESS SECTION ━━━━━━ */}
+      <section className="bg-[var(--sea-ink)] py-32 overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--brand-orange)] opacity-5 blur-3xl rounded-full" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[var(--brand-blue)] opacity-5 blur-3xl rounded-full" />
+
+        <div className="page-wrap relative z-10">
+          <div className="text-center mb-20">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-sm">
+              <Sparkles size={14} className="text-[var(--brand-orange)]" />
+              <span className="text-xs font-black uppercase tracking-widest text-white/60">Our Method</span>
+            </div>
+            <h2 className="display-title text-4xl font-extrabold md:text-5xl text-white mb-4">
+              The Process Behind{' '}
+              <span className="text-[var(--brand-orange)]">Every Project.</span>
+            </h2>
+            <p className="mx-auto max-w-xl text-white/40 text-base">
+              Whether it's a concept build or a client engagement, every project follows the same rigorous methodology.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[
+              { num: '01', icon: <Search size={22} />, title: 'Discovery', desc: 'Research goals, users, and competitive landscape.' },
+              { num: '02', icon: <Lightbulb size={22} />, title: 'Strategy', desc: 'Define positioning, IA, and conversion approach.' },
+              { num: '03', icon: <PenTool size={22} />, title: 'Wireframe', desc: 'Structure layouts and user flows before design.' },
+              { num: '04', icon: <Layout size={22} />, title: 'UI Design', desc: 'Pixel-perfect, brand-consistent visual design.' },
+              { num: '05', icon: <Code2 size={22} />, title: 'Development', desc: 'Clean, performant code with modern frameworks.' },
+              { num: '06', icon: <Rocket size={22} />, title: 'Launch & Optimize', desc: 'Deploy, monitor, and iterate for better results.' },
+            ].map((step, i) => (
+              <div key={step.num} className="relative group">
+                {i < 5 && (
+                  <div className="absolute top-8 left-full w-full h-px bg-white/5 hidden lg:block" />
+                )}
+                <div className="bg-white/[0.03] rounded-[1.5rem] p-6 border border-white/5 hover:border-white/10 hover:bg-white/[0.06] transition-all duration-300 text-center h-full">
+                  <div className="text-3xl font-black text-[var(--brand-orange)] opacity-20 mb-3 group-hover:opacity-40 transition">{step.num}</div>
+                  <div className="mx-auto w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mb-4 text-white/40 group-hover:text-[var(--brand-orange)] transition-colors">
+                    {step.icon}
+                  </div>
+                  <h3 className="text-white font-extrabold text-sm mb-2">{step.title}</h3>
+                  <p className="text-white/30 text-xs leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust statement */}
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/10 px-6 py-3 backdrop-blur-sm">
+              <CheckCircle2 size={16} className="text-[var(--brand-orange)]" />
+              <span className="text-sm text-white/50 font-medium">
+                Every project includes unlimited design revisions and post-launch support.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━━━━ WHY SMALL AGENCY ━━━━━━ */}
+      <section className="page-wrap py-28">
+        <div className="text-center mb-16">
+          <div className="island-kicker mb-5">The small agency advantage</div>
+          <h2 className="display-title text-4xl font-extrabold md:text-5xl text-[var(--sea-ink)] leading-tight">
+            Why Work With a{' '}
+            <span className="text-[var(--brand-orange)]">Small Agency?</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {[
+            { icon: <UserCheck size={22} className="text-[var(--brand-orange)]" />, title: 'Founder-Led Projects', desc: 'Your project is handled directly by the founders — not delegated to junior staff you\'ve never met.' },
+            { icon: <MessageCircle size={22} className="text-[var(--brand-blue)]" />, title: 'Direct Communication', desc: 'No account managers, no game of telephone. You talk directly to the people building your product.' },
+            { icon: <Handshake size={22} className="text-emerald-500" />, title: 'Flexible Engagement', desc: 'Fixed-price projects, retainers, or milestone-based. We adapt to what makes sense for your stage.' },
+            { icon: <Timer size={22} className="text-purple-500" />, title: 'Faster Turnaround', desc: 'Less overhead means faster decisions. Most projects launch in 2–6 weeks, not 6 months.' },
+            { icon: <ShieldCheck size={22} className="text-rose-500" />, title: 'No Agency Bureaucracy', desc: 'No bloated proposals, no unnecessary meetings. We focus on shipping great work — quickly and efficiently.' },
+            { icon: <TrendingUp size={22} className="text-amber-500" />, title: 'Long-Term Partnership', desc: 'We\'re building our reputation on every project. Your success is our success — literally.' },
+          ].map(item => (
+            <div key={item.title} className="flex gap-5 p-6 rounded-[2rem] border border-[var(--line)] bg-white hover:border-[var(--brand-orange)]/20 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[var(--foam)] flex items-center justify-center">
+                {item.icon}
+              </div>
+              <div>
+                <h3 className="font-extrabold text-[var(--sea-ink)] mb-1.5">{item.title}</h3>
+                <p className="text-sm text-[var(--sea-ink-soft)] leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ━━━━━━ STRONG CTA ━━━━━━ */}
       <section className="page-wrap pb-32">
         <div className="relative rounded-[4rem] overflow-hidden bg-[var(--brand-blue)]">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--brand-blue)_0%,#001a66_100%)]" />
@@ -303,22 +407,32 @@ function CaseStudiesPage() {
           <div className="relative z-10 p-16 md:p-28 text-center">
             <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-white text-xs font-black uppercase tracking-widest backdrop-blur-md border border-white/10">
               <Layers size={14} className="text-[var(--brand-orange)]" />
-              Your Story Could Be Next
+              Let's Work Together
             </div>
             <h2 className="display-title text-5xl font-extrabold md:text-7xl text-white leading-tight mb-8">
-              Ready to Become Our <br />
-              <span className="text-[var(--brand-orange)]">Next Success Story?</span>
+              Let's Build Your <br />
+              <span className="text-[var(--brand-orange)]">Success Story Together.</span>
             </h2>
             <p className="mx-auto mb-12 max-w-xl text-xl text-white/50">
-              Let's discuss your challenges and craft a tailored solution that delivers real, measurable results.
+              If you like how we think and work, let's talk about your project.
+              Free consultation. No obligation.
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-orange)] px-12 py-5 text-sm font-bold uppercase tracking-widest text-white shadow-[0_16px_50px_-8px_var(--brand-orange)] transition-all hover:scale-110 active:scale-95"
-              style={{ color: 'white' }}
-            >
-              Start Your Project <ArrowRight size={16} />
-            </Link>
+            <div className="flex flex-wrap justify-center gap-5">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-orange)] px-12 py-5 text-sm font-bold uppercase tracking-widest text-white shadow-[0_16px_50px_-8px_var(--brand-orange)] transition-all hover:scale-105 active:scale-95"
+                style={{ color: 'white' }}
+              >
+                Book a Free Consultation <ArrowRight size={16} />
+              </Link>
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-10 py-5 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-105 active:scale-95"
+                style={{ color: 'white' }}
+              >
+                View Services
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -326,9 +440,9 @@ function CaseStudiesPage() {
   )
 }
 
-// ─── Case Study Card Component ──────────────────────────────────────
-function CaseStudyCard({ study, index, isExpanded, onToggle }: {
-  study: typeof caseStudies[0]
+// ─── Project Card Component ─────────────────────────────────────────
+function ProjectCard({ project, index, isExpanded, onToggle }: {
+  project: typeof projects[0]
   index: number
   isExpanded: boolean
   onToggle: () => void
@@ -337,40 +451,39 @@ function CaseStudyCard({ study, index, isExpanded, onToggle }: {
 
   return (
     <article className="group">
-      {/* ── Card Header with Image + Summary ── */}
       <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${!isEven ? 'lg:[direction:rtl]' : ''}`}>
         {/* IMAGE SIDE */}
         <div className={`relative ${!isEven ? 'lg:[direction:ltr]' : ''}`}>
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_32px_80px_-20px_rgba(0,0,0,0.15)] group-hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] transition-shadow duration-500">
             <img
-              src={study.image}
-              alt={study.title}
+              src={project.image}
+              alt={project.title}
               className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
             />
             <div
               className="absolute inset-0"
-              style={{ background: `linear-gradient(135deg, ${study.color}20 0%, transparent 60%)` }}
+              style={{ background: `linear-gradient(135deg, ${project.color}20 0%, transparent 60%)` }}
             />
+            {/* Concept badge */}
+            <div className="absolute top-6 left-6 rounded-full bg-[var(--sea-ink)]/80 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white border border-white/10">
+              ✦ {project.label}
+            </div>
             {/* Category badge */}
             <div
-              className="absolute top-6 left-6 rounded-full px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md border border-white/20"
-              style={{ background: `${study.color}cc` }}
+              className="absolute top-6 right-6 rounded-full px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md border border-white/20"
+              style={{ background: `${project.color}cc` }}
             >
-              {study.category}
-            </div>
-            {/* Year badge */}
-            <div className="absolute top-6 right-6 rounded-full bg-white/20 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white border border-white/10">
-              {study.year}
+              {project.category}
             </div>
           </div>
 
           {/* Floating metrics card */}
           <div className="absolute -bottom-8 left-8 right-8 bg-white rounded-3xl p-5 shadow-2xl border border-[var(--line)] grid grid-cols-4 gap-2">
-            {study.results.map(r => (
-              <div key={r.label} className="text-center">
-                <div className="text-lg font-black" style={{ color: study.color }}>{r.value}</div>
-                <div className="text-[8px] font-bold uppercase tracking-widest text-[var(--sea-ink-soft)] mt-0.5 leading-tight">{r.label}</div>
+            {project.metrics.map(m => (
+              <div key={m.label} className="text-center">
+                <div className="text-lg font-black" style={{ color: project.color }}>{m.value}</div>
+                <div className="text-[8px] font-bold uppercase tracking-widest text-[var(--sea-ink-soft)] mt-0.5 leading-tight">{m.label}</div>
               </div>
             ))}
           </div>
@@ -378,54 +491,45 @@ function CaseStudyCard({ study, index, isExpanded, onToggle }: {
 
         {/* TEXT SIDE */}
         <div className={`pt-8 lg:pt-0 ${!isEven ? 'lg:[direction:ltr]' : ''}`}>
-          {/* Client tag */}
           <div className="mb-4 inline-flex items-center gap-2">
             <div
               className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{ background: study.colorLight, color: study.color }}
+              style={{ background: project.colorLight, color: project.color }}
             >
-              {study.icon}
+              {project.icon}
             </div>
             <span className="text-xs font-black uppercase tracking-widest text-[var(--sea-ink-soft)]">
-              {study.client}
+              {project.scope}
             </span>
           </div>
 
           <h2 className="display-title text-3xl font-extrabold md:text-4xl text-[var(--sea-ink)] leading-tight mb-5">
-            {study.title}
+            {project.title}
           </h2>
 
           <p className="text-[var(--sea-ink-soft)] text-base leading-relaxed mb-6">
-            {study.excerpt}
+            {project.excerpt}
           </p>
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-8">
-            {study.tags.map(tag => (
+            {project.tags.map(tag => (
               <span key={tag} className="rounded-full bg-[var(--foam)] px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[var(--sea-ink-soft)] border border-[var(--line)]">
                 {tag}
               </span>
             ))}
           </div>
 
-          {/* Duration */}
-          <div className="flex items-center gap-6 mb-8">
-            <div className="flex items-center gap-2 text-sm text-[var(--sea-ink-soft)]">
-              <Clock size={14} style={{ color: study.color }} />
-              <span className="font-bold">{study.duration}</span>
-            </div>
-          </div>
-
-          {/* Expand Button */}
+          {/* CTA */}
           <button
             onClick={onToggle}
             className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-[11px] font-black uppercase tracking-widest text-white transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
             style={{
-              background: study.color,
-              boxShadow: `0 12px 40px -8px ${study.color}60`,
+              background: project.color,
+              boxShadow: `0 12px 40px -8px ${project.color}60`,
             }}
           >
-            {isExpanded ? 'Collapse Details' : 'View Full Case Study'}
+            {isExpanded ? 'Collapse Details' : 'View Case Study'}
             <ArrowUpRight size={14} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
           </button>
         </div>
@@ -448,13 +552,13 @@ function CaseStudyCard({ study, index, isExpanded, onToggle }: {
                 <div className="w-10 h-10 rounded-2xl bg-red-50 flex items-center justify-center">
                   <Target size={20} className="text-red-500" />
                 </div>
-                <h3 className="text-xl font-extrabold text-[var(--sea-ink)]">{study.problem.title}</h3>
+                <h3 className="text-xl font-extrabold text-[var(--sea-ink)]">{project.problem.title}</h3>
               </div>
               <p className="text-sm text-[var(--sea-ink-soft)] leading-relaxed mb-6">
-                {study.problem.description}
+                {project.problem.description}
               </p>
               <div className="space-y-3">
-                {study.problem.points.map(point => (
+                {project.problem.points.map(point => (
                   <div key={point} className="flex items-start gap-3">
                     <div className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-red-400" />
                     <span className="text-sm text-[var(--sea-ink-soft)]">{point}</span>
@@ -468,19 +572,19 @@ function CaseStudyCard({ study, index, isExpanded, onToggle }: {
               <div className="flex items-center gap-3 mb-6">
                 <div
                   className="w-10 h-10 rounded-2xl flex items-center justify-center"
-                  style={{ background: study.colorLight }}
+                  style={{ background: project.colorLight }}
                 >
-                  <CheckCircle2 size={20} style={{ color: study.color }} />
+                  <CheckCircle2 size={20} style={{ color: project.color }} />
                 </div>
-                <h3 className="text-xl font-extrabold text-[var(--sea-ink)]">{study.solution.title}</h3>
+                <h3 className="text-xl font-extrabold text-[var(--sea-ink)]">{project.solution.title}</h3>
               </div>
               <p className="text-sm text-[var(--sea-ink-soft)] leading-relaxed mb-6">
-                {study.solution.description}
+                {project.solution.description}
               </p>
               <div className="space-y-3">
-                {study.solution.points.map(point => (
+                {project.solution.points.map(point => (
                   <div key={point} className="flex items-start gap-3">
-                    <CheckCircle2 size={14} className="mt-0.5 flex-shrink-0" style={{ color: study.color }} />
+                    <CheckCircle2 size={14} className="mt-0.5 flex-shrink-0" style={{ color: project.color }} />
                     <span className="text-sm text-[var(--sea-ink-soft)]">{point}</span>
                   </div>
                 ))}
@@ -488,50 +592,26 @@ function CaseStudyCard({ study, index, isExpanded, onToggle }: {
             </div>
           </div>
 
-          {/* RESULTS BAR */}
+          {/* METRICS BAR */}
           <div className="mt-12 rounded-[2rem] bg-white p-8 border border-[var(--line)] shadow-sm">
             <div className="text-center mb-8">
-              <span className="island-kicker">Measurable Impact</span>
+              <span className="island-kicker">Design Targets & Standards</span>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {study.results.map(r => (
-                <div key={r.label} className="text-center group/stat">
-                  <div
-                    className="mx-auto w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover/stat:scale-110"
-                    style={{ background: study.colorLight, color: study.color }}
-                  >
-                    {r.icon}
-                  </div>
-                  <div className="text-3xl font-black" style={{ color: study.color }}>{r.value}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--sea-ink-soft)] mt-1">{r.label}</div>
+              {project.metrics.map(m => (
+                <div key={m.label} className="text-center group/stat">
+                  <div className="text-3xl font-black mb-1" style={{ color: project.color }}>{m.value}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--sea-ink-soft)]">{m.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* TESTIMONIAL */}
-          <div className="mt-12 relative">
-            <div
-              className="rounded-[2rem] p-8 md:p-12"
-              style={{ background: `linear-gradient(135deg, ${study.color}08 0%, ${study.color}03 100%)`, border: `1px solid ${study.color}15` }}
-            >
-              <Quote size={32} style={{ color: study.color }} className="mb-4 opacity-30" />
-              <blockquote className="text-lg md:text-xl font-medium text-[var(--sea-ink)] leading-relaxed mb-6 italic">
-                "{study.testimonial.quote}"
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg"
-                  style={{ background: study.color }}
-                >
-                  {study.testimonial.author[0]}
-                </div>
-                <div>
-                  <div className="font-extrabold text-[var(--sea-ink)]">{study.testimonial.author}</div>
-                  <div className="text-sm text-[var(--sea-ink-soft)]">{study.testimonial.role}</div>
-                </div>
-              </div>
-            </div>
+          {/* Transparency note */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-[var(--sea-ink-soft)]/50 italic">
+              This is a concept project showcasing our design process and development capabilities. Not affiliated with any existing brand.
+            </p>
           </div>
         </div>
       </div>

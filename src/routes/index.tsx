@@ -173,7 +173,7 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* ━━━━━━━━━━━━━━━━ FEATURED CASE STUDIES ━━━━━━━━━━━━━━━━ */}
+      {/* ━━━━━━━━━━━━━━━━ FEATURED CONCEPT PROJECTS ━━━━━━━━━━━━━━━━ */}
       <section className="relative py-32 bg-[var(--sea-ink)] overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,102,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,102,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
@@ -186,19 +186,19 @@ function LandingPage() {
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-sm">
               <span className="flex h-2 w-2 rounded-full bg-[var(--brand-orange)] shadow-[0_0_8px_var(--brand-orange)]" />
               <span className="text-xs font-black uppercase tracking-widest text-white/60">
-                Proven Results
+                Selected Work
               </span>
             </div>
             <h2 className="display-title text-4xl font-extrabold md:text-6xl text-white leading-tight mb-6">
-              Case Studies That{' '}
-              <span className="text-[var(--brand-orange)]">Deliver.</span>
+              Concept Projects That{' '}
+              <span className="text-[var(--brand-orange)]">Prove Quality.</span>
             </h2>
             <p className="mx-auto max-w-xl text-lg text-white/40">
-              Real challenges. Real solutions. Here are some of the projects that transformed our clients' businesses.
+              Real execution. Real standards. Concept work that showcases our thinking, process, and what we'll bring to your project.
             </p>
           </div>
 
-          {/* Case Study 1 — SwiftCart (Left image) */}
+          {/* Project 1 — E-Commerce Redesign (Left image) */}
           <div className="mb-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Big Screenshot */}
@@ -206,37 +206,36 @@ function LandingPage() {
                 <div className="rounded-[2rem] overflow-hidden shadow-[0_32px_80px_-16px_rgba(0,0,0,0.5)] border border-white/5 transition-all duration-500 group-hover:shadow-[0_40px_100px_-16px_rgba(255,102,0,0.2)]">
                   <img
                     src="/case-ecommerce.png"
-                    alt="SwiftCart E-Commerce Dashboard"
+                    alt="E-Commerce Platform Concept"
                     className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-[2rem]" />
                 </div>
-                {/* Category pill */}
-                <div className="absolute top-5 left-5 rounded-full bg-[var(--brand-orange)]/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white">
-                  E-Commerce
+                <div className="absolute top-5 left-5 rounded-full bg-[var(--sea-ink)]/80 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white border border-white/10">
+                  ✦ Concept Project
                 </div>
               </div>
 
               {/* Content */}
               <div>
                 <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--brand-orange)] mb-3 block">
-                  SwiftCart Global
+                  SaaS Landing Page Redesign
                 </span>
                 <h3 className="display-title text-3xl font-extrabold md:text-4xl text-white leading-tight mb-5">
-                  Turning Cart Abandonment Into a 340% Revenue Surge
+                  E-Commerce Platform — Redesigned for Conversion
                 </h3>
                 <p className="text-white/40 text-base leading-relaxed mb-8">
-                  We rebuilt SwiftCart's entire checkout flow and storefront — transforming a sluggish e-commerce site with 78% cart abandonment into a high-converting machine.
+                  A concept exploring how single-page checkout, headless architecture, and mobile-first UX can drastically reduce cart abandonment rates.
                 </p>
 
-                {/* Result Metrics */}
+                {/* Design Target Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
                   {[
-                    { value: '340%', label: 'Revenue Growth' },
-                    { value: '0.8s', label: 'Load Time' },
-                    { value: '4.2%', label: 'Conversion Rate' },
-                    { value: '52%', label: 'Lower Bounce' },
+                    { value: '<1s', label: 'Target Load' },
+                    { value: '1-Step', label: 'Checkout Flow' },
+                    { value: '30+', label: 'Devices Tested' },
+                    { value: '98', label: 'Lighthouse Score' },
                   ].map(m => (
                     <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center hover:bg-white/10 transition-colors duration-300">
                       <div className="text-2xl font-black text-[var(--brand-orange)]">{m.value}</div>
@@ -245,40 +244,37 @@ function LandingPage() {
                   ))}
                 </div>
 
-                {/* CTA */}
                 <Link
                   to="/case-studies"
                   className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-8 py-3.5 text-[11px] font-black uppercase tracking-widest text-white backdrop-blur-md transition-all hover:bg-[var(--brand-orange)] hover:border-[var(--brand-orange)] hover:shadow-[0_12px_40px_-8px_var(--brand-orange)] hover:scale-105 active:scale-95"
                   style={{ color: 'white' }}
                 >
-                  View Full Case Study <ArrowRight size={14} />
+                  View Case Study <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* Case Study 2 — GrowthHub (Right image) */}
+          {/* Project 2 — Analytics Dashboard (Right image) */}
           <div className="mb-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Content (left on desktop) */}
               <div className="order-2 lg:order-1">
                 <span className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-400 mb-3 block">
-                  GrowthHub Analytics
+                  Fintech Dashboard UI
                 </span>
                 <h3 className="display-title text-3xl font-extrabold md:text-4xl text-white leading-tight mb-5">
-                  From Startup MVP to 12,000+ Active Users in 90 Days
+                  Analytics Dashboard — From Data Overload to Insight
                 </h3>
                 <p className="text-white/40 text-base leading-relaxed mb-8">
-                  We redesigned GrowthHub's clunky dashboard into an intuitive analytics platform with drag-and-drop widgets and AI-powered onboarding.
+                  An internal build exploring how SaaS dashboards can move beyond spreadsheet-style tables toward intuitive, drag-and-drop widget systems.
                 </p>
 
-                {/* Result Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
                   {[
-                    { value: '12K+', label: 'Active Users' },
-                    { value: '3 min', label: 'Onboarding' },
-                    { value: '+67', label: 'NPS Score' },
-                    { value: '8%', label: 'Monthly Churn' },
+                    { value: '<3 min', label: 'Target Onboard' },
+                    { value: 'Drag & Drop', label: 'Widgets' },
+                    { value: 'WCAG AA', label: 'Accessibility' },
+                    { value: 'Dark+Light', label: 'Themes' },
                   ].map(m => (
                     <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center hover:bg-white/10 transition-colors duration-300">
                       <div className="text-2xl font-black text-blue-400">{m.value}</div>
@@ -287,82 +283,75 @@ function LandingPage() {
                   ))}
                 </div>
 
-                {/* CTA */}
                 <Link
                   to="/case-studies"
                   className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-8 py-3.5 text-[11px] font-black uppercase tracking-widest text-white backdrop-blur-md transition-all hover:bg-[var(--brand-blue)] hover:border-[var(--brand-blue)] hover:shadow-[0_12px_40px_-8px_var(--brand-blue)] hover:scale-105 active:scale-95"
                   style={{ color: 'white' }}
                 >
-                  View Full Case Study <ArrowRight size={14} />
+                  View Case Study <ArrowRight size={14} />
                 </Link>
               </div>
 
-              {/* Big Screenshot (right on desktop) */}
               <div className="relative group order-1 lg:order-2">
                 <div className="rounded-[2rem] overflow-hidden shadow-[0_32px_80px_-16px_rgba(0,0,0,0.5)] border border-white/5 transition-all duration-500 group-hover:shadow-[0_40px_100px_-16px_rgba(0,51,153,0.3)]">
                   <img
                     src="/case-saas.png"
-                    alt="GrowthHub SaaS Dashboard"
+                    alt="Analytics Dashboard Concept"
                     className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-[2rem]" />
                 </div>
-                {/* Category pill */}
-                <div className="absolute top-5 left-5 rounded-full bg-[var(--brand-blue)]/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white">
-                  SaaS Platform
+                <div className="absolute top-5 left-5 rounded-full bg-[var(--sea-ink)]/80 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white border border-white/10">
+                  ✦ Concept Project
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Case Study 3 — Finanza (Full width) */}
+          {/* Project 3 — Fintech (Full width) */}
           <div className="relative group">
             <div className="rounded-[2.5rem] overflow-hidden border border-white/5">
-              {/* Full-width image */}
               <div className="relative h-[360px] md:h-[440px] overflow-hidden">
                 <img
                   src="/case-fintech.png"
-                  alt="Finanza Global FinTech Platform"
+                  alt="Fintech Platform Concept"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--sea-ink)] via-[var(--sea-ink)]/60 to-transparent" />
-                {/* Category pill */}
-                <div className="absolute top-6 left-6 rounded-full bg-purple-500/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white">
-                  FinTech
+                <div className="absolute top-6 left-6 rounded-full bg-[var(--sea-ink)]/80 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white border border-white/10">
+                  ✦ Concept Project
                 </div>
               </div>
 
-              {/* Overlay content at bottom */}
               <div className="relative -mt-44 z-10 p-8 md:p-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end">
                   <div>
                     <span className="text-[10px] font-black uppercase tracking-[0.25em] text-purple-400 mb-3 block">
-                      Finanza Global
+                      Startup Marketing Website
                     </span>
                     <h3 className="display-title text-3xl font-extrabold md:text-4xl text-white leading-tight mb-4">
-                      Rebuilding Trust With a Secure Payments Platform
+                      Fintech Launch — Building Trust Through Design
                     </h3>
                     <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-lg">
-                      We engineered a modern, bank-grade platform that processes $2M+ daily with 99.99% uptime — turning merchant churn from 12% to just 2%.
+                      A concept exploring how design itself builds trust for fintech startups — from transparent pricing UIs to security-first mobile dashboards.
                     </p>
                     <Link
                       to="/case-studies"
                       className="inline-flex items-center gap-2 rounded-full bg-purple-500 px-8 py-3.5 text-[11px] font-black uppercase tracking-widest text-white transition-all hover:scale-105 hover:shadow-[0_12px_40px_-8px_rgba(139,92,246,0.5)] active:scale-95"
                       style={{ color: 'white' }}
                     >
-                      View Full Case Study <ArrowRight size={14} />
+                      View Case Study <ArrowRight size={14} />
                     </Link>
                   </div>
 
-                  {/* Metrics row */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {[
-                      { value: '$2M+', label: 'Daily Volume' },
-                      { value: '99.99%', label: 'Uptime' },
-                      { value: '2%', label: 'Churn Rate' },
-                      { value: 'T+1', label: 'Settlement' },
+                      { value: 'Mobile-First', label: 'Design' },
+                      { value: 'WCAG 2.1', label: 'Accessibility' },
+                      { value: 'Real-time', label: 'Data Updates' },
+                      { value: 'Dark+Light', label: 'Themes' },
                     ].map(m => (
                       <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
                         <div className="text-2xl font-black text-purple-400">{m.value}</div>
@@ -382,9 +371,14 @@ function LandingPage() {
               className="inline-flex items-center gap-3 rounded-full bg-[var(--brand-orange)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-[0_16px_50px_-8px_var(--brand-orange)] transition-all hover:scale-105 active:scale-95"
               style={{ color: 'white' }}
             >
-              View All Case Studies <ArrowRight size={16} />
+              View All Projects <ArrowRight size={16} />
             </Link>
           </div>
+
+          {/* Transparency note */}
+          <p className="text-center mt-8 text-xs text-white/20">
+            All projects shown are independent concept work showcasing our design capabilities.
+          </p>
         </div>
       </section>
 
