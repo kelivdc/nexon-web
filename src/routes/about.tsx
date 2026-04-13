@@ -152,7 +152,7 @@ function About() {
 
               <div className="space-y-5 mb-10">
                 {[
-                  { icon: <Code2 size={20} className="text-[var(--brand-orange)]" />, text: '5+ years in web development and digital product design' },
+                  { icon: <Code2 size={20} className="text-[var(--brand-orange)]" />, text: '15+ years in web development and digital product design' },
                   { icon: <Briefcase size={20} className="text-[var(--brand-blue)]" />, text: '10+ projects delivered across e-commerce, SaaS, corporate, and education' },
                   { icon: <Rocket size={20} className="text-emerald-500" />, text: 'Experience building SaaS platforms, corporate websites, and internal tools' },
                   { icon: <Target size={20} className="text-purple-500" />, text: 'Strong focus on performance, scalability, and conversion-driven UX' },
@@ -178,7 +178,7 @@ function About() {
             {/* Stats grid */}
             <div className="grid grid-cols-2 gap-5">
               {[
-                { value: '5+', label: 'Years Experience', color: 'var(--brand-orange)' },
+                { value: '15+', label: 'Years Experience', color: 'var(--brand-orange)' },
                 { value: '10+', label: 'Projects Delivered', color: 'var(--brand-blue)' },
                 { value: '<24h', label: 'Response Time', color: '#10b981' },
                 { value: '100%', label: 'Founder Involvement', color: '#8b5cf6' },
