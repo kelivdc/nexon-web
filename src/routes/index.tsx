@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
 import {
-  Rocket, Zap, Globe, GraduationCap, CheckCircle2, TrendingUp,
+  Rocket, Zap, Globe, CheckCircle2, TrendingUp,
   ArrowRight, Star, Award, Users
 } from 'lucide-react'
 
@@ -20,7 +20,6 @@ const IMG = {
   hero: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&q=80&auto=format&fit=crop',
   dashboard: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop',
   team: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
-  school: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80&auto=format&fit=crop',
   office: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop',
   coding: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&auto=format&fit=crop',
 }
@@ -174,6 +173,221 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* ━━━━━━━━━━━━━━━━ FEATURED CASE STUDIES ━━━━━━━━━━━━━━━━ */}
+      <section className="relative py-32 bg-[var(--sea-ink)] overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,102,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,102,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[var(--brand-blue)] opacity-[0.06] rounded-full blur-[200px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[var(--brand-orange)] opacity-[0.05] rounded-full blur-[120px]" />
+
+        <div className="page-wrap relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-sm">
+              <span className="flex h-2 w-2 rounded-full bg-[var(--brand-orange)] shadow-[0_0_8px_var(--brand-orange)]" />
+              <span className="text-xs font-black uppercase tracking-widest text-white/60">
+                Proven Results
+              </span>
+            </div>
+            <h2 className="display-title text-4xl font-extrabold md:text-6xl text-white leading-tight mb-6">
+              Case Studies That{' '}
+              <span className="text-[var(--brand-orange)]">Deliver.</span>
+            </h2>
+            <p className="mx-auto max-w-xl text-lg text-white/40">
+              Real challenges. Real solutions. Here are some of the projects that transformed our clients' businesses.
+            </p>
+          </div>
+
+          {/* Case Study 1 — SwiftCart (Left image) */}
+          <div className="mb-28">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Big Screenshot */}
+              <div className="relative group">
+                <div className="rounded-[2rem] overflow-hidden shadow-[0_32px_80px_-16px_rgba(0,0,0,0.5)] border border-white/5 transition-all duration-500 group-hover:shadow-[0_40px_100px_-16px_rgba(255,102,0,0.2)]">
+                  <img
+                    src="/case-ecommerce.png"
+                    alt="SwiftCart E-Commerce Dashboard"
+                    className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-[2rem]" />
+                </div>
+                {/* Category pill */}
+                <div className="absolute top-5 left-5 rounded-full bg-[var(--brand-orange)]/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white">
+                  E-Commerce
+                </div>
+              </div>
+
+              {/* Content */}
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[var(--brand-orange)] mb-3 block">
+                  SwiftCart Global
+                </span>
+                <h3 className="display-title text-3xl font-extrabold md:text-4xl text-white leading-tight mb-5">
+                  Turning Cart Abandonment Into a 340% Revenue Surge
+                </h3>
+                <p className="text-white/40 text-base leading-relaxed mb-8">
+                  We rebuilt SwiftCart's entire checkout flow and storefront — transforming a sluggish e-commerce site with 78% cart abandonment into a high-converting machine.
+                </p>
+
+                {/* Result Metrics */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                  {[
+                    { value: '340%', label: 'Revenue Growth' },
+                    { value: '0.8s', label: 'Load Time' },
+                    { value: '4.2%', label: 'Conversion Rate' },
+                    { value: '52%', label: 'Lower Bounce' },
+                  ].map(m => (
+                    <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center hover:bg-white/10 transition-colors duration-300">
+                      <div className="text-2xl font-black text-[var(--brand-orange)]">{m.value}</div>
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mt-1">{m.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <Link
+                  to="/case-studies"
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-8 py-3.5 text-[11px] font-black uppercase tracking-widest text-white backdrop-blur-md transition-all hover:bg-[var(--brand-orange)] hover:border-[var(--brand-orange)] hover:shadow-[0_12px_40px_-8px_var(--brand-orange)] hover:scale-105 active:scale-95"
+                  style={{ color: 'white' }}
+                >
+                  View Full Case Study <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Case Study 2 — GrowthHub (Right image) */}
+          <div className="mb-28">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Content (left on desktop) */}
+              <div className="order-2 lg:order-1">
+                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-400 mb-3 block">
+                  GrowthHub Analytics
+                </span>
+                <h3 className="display-title text-3xl font-extrabold md:text-4xl text-white leading-tight mb-5">
+                  From Startup MVP to 12,000+ Active Users in 90 Days
+                </h3>
+                <p className="text-white/40 text-base leading-relaxed mb-8">
+                  We redesigned GrowthHub's clunky dashboard into an intuitive analytics platform with drag-and-drop widgets and AI-powered onboarding.
+                </p>
+
+                {/* Result Metrics */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                  {[
+                    { value: '12K+', label: 'Active Users' },
+                    { value: '3 min', label: 'Onboarding' },
+                    { value: '+67', label: 'NPS Score' },
+                    { value: '8%', label: 'Monthly Churn' },
+                  ].map(m => (
+                    <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center hover:bg-white/10 transition-colors duration-300">
+                      <div className="text-2xl font-black text-blue-400">{m.value}</div>
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mt-1">{m.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <Link
+                  to="/case-studies"
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-8 py-3.5 text-[11px] font-black uppercase tracking-widest text-white backdrop-blur-md transition-all hover:bg-[var(--brand-blue)] hover:border-[var(--brand-blue)] hover:shadow-[0_12px_40px_-8px_var(--brand-blue)] hover:scale-105 active:scale-95"
+                  style={{ color: 'white' }}
+                >
+                  View Full Case Study <ArrowRight size={14} />
+                </Link>
+              </div>
+
+              {/* Big Screenshot (right on desktop) */}
+              <div className="relative group order-1 lg:order-2">
+                <div className="rounded-[2rem] overflow-hidden shadow-[0_32px_80px_-16px_rgba(0,0,0,0.5)] border border-white/5 transition-all duration-500 group-hover:shadow-[0_40px_100px_-16px_rgba(0,51,153,0.3)]">
+                  <img
+                    src="/case-saas.png"
+                    alt="GrowthHub SaaS Dashboard"
+                    className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-[2rem]" />
+                </div>
+                {/* Category pill */}
+                <div className="absolute top-5 left-5 rounded-full bg-[var(--brand-blue)]/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white">
+                  SaaS Platform
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Case Study 3 — Finanza (Full width) */}
+          <div className="relative group">
+            <div className="rounded-[2.5rem] overflow-hidden border border-white/5">
+              {/* Full-width image */}
+              <div className="relative h-[360px] md:h-[440px] overflow-hidden">
+                <img
+                  src="/case-fintech.png"
+                  alt="Finanza Global FinTech Platform"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--sea-ink)] via-[var(--sea-ink)]/60 to-transparent" />
+                {/* Category pill */}
+                <div className="absolute top-6 left-6 rounded-full bg-purple-500/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-white">
+                  FinTech
+                </div>
+              </div>
+
+              {/* Overlay content at bottom */}
+              <div className="relative -mt-44 z-10 p-8 md:p-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end">
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-purple-400 mb-3 block">
+                      Finanza Global
+                    </span>
+                    <h3 className="display-title text-3xl font-extrabold md:text-4xl text-white leading-tight mb-4">
+                      Rebuilding Trust With a Secure Payments Platform
+                    </h3>
+                    <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-lg">
+                      We engineered a modern, bank-grade platform that processes $2M+ daily with 99.99% uptime — turning merchant churn from 12% to just 2%.
+                    </p>
+                    <Link
+                      to="/case-studies"
+                      className="inline-flex items-center gap-2 rounded-full bg-purple-500 px-8 py-3.5 text-[11px] font-black uppercase tracking-widest text-white transition-all hover:scale-105 hover:shadow-[0_12px_40px_-8px_rgba(139,92,246,0.5)] active:scale-95"
+                      style={{ color: 'white' }}
+                    >
+                      View Full Case Study <ArrowRight size={14} />
+                    </Link>
+                  </div>
+
+                  {/* Metrics row */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    {[
+                      { value: '$2M+', label: 'Daily Volume' },
+                      { value: '99.99%', label: 'Uptime' },
+                      { value: '2%', label: 'Churn Rate' },
+                      { value: 'T+1', label: 'Settlement' },
+                    ].map(m => (
+                      <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                        <div className="text-2xl font-black text-purple-400">{m.value}</div>
+                        <div className="text-[9px] font-bold uppercase tracking-widest text-white/30 mt-1">{m.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* See All CTA */}
+          <div className="text-center mt-20">
+            <Link
+              to="/case-studies"
+              className="inline-flex items-center gap-3 rounded-full bg-[var(--brand-orange)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-[0_16px_50px_-8px_var(--brand-orange)] transition-all hover:scale-105 active:scale-95"
+              style={{ color: 'white' }}
+            >
+              View All Case Studies <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ━━━━━━━━━━━━━━━━ WHY US ━━━━━━━━━━━━━━━━ */}
       <section className="bg-[var(--foam)] py-32">
         <div className="page-wrap grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -232,62 +446,6 @@ function LandingPage() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━ CSR — FREE SCHOOLS ━━━━━━━━━━━━━━━━ */}
-      <section className="page-wrap py-32">
-        <div className="relative rounded-[4rem] overflow-hidden bg-[var(--brand-blue)]">
-          {/* Bg image */}
-          <img
-            src={IMG.school}
-            alt="School"
-            className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-blue)]/90 to-[#001a66]" />
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 p-12 md:p-20 items-center">
-            <div>
-              <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-white text-xs font-black uppercase tracking-widest backdrop-blur-md border border-white/10">
-                <GraduationCap size={16} className="text-[var(--brand-orange)]" />
-                Social Impact · Campaign 2026
-              </div>
-              <h2 className="display-title text-4xl font-extrabold md:text-6xl text-white leading-tight mb-8">
-                Free Websites <br />
-                <span className="text-[var(--brand-orange)]">For Schools.</span>
-              </h2>
-              <p className="text-blue-100/80 text-lg leading-relaxed mb-10 max-w-lg">
-                Every school deserves a professional digital presence. NexonAce provides free, fully featured school websites as part of our commitment to global education.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-12">
-                {['School Profile', 'News Hub', 'Online Registration', 'CSR Verified'].map((f) => (
-                  <div key={f} className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-[var(--brand-orange)] flex-shrink-0" />
-                    <span className="text-sm font-bold text-white">{f}</span>
-                  </div>
-                ))}
-              </div>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-orange)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:scale-105 shadow-[0_16px_40px_-8px_var(--brand-orange)]"
-                style={{ color: 'white' }}
-              >
-                Nominate a School <ArrowRight size={16} />
-              </Link>
-            </div>
-
-            <div className="hidden lg:block">
-              <div className="rounded-[3rem] overflow-hidden border-4 border-white/10 shadow-2xl">
-                <img
-                  src={IMG.school}
-                  alt="School building"
-                  className="w-full h-96 object-cover"
-                  loading="lazy"
-                />
-              </div>
             </div>
           </div>
         </div>

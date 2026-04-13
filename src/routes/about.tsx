@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Link } from '@tanstack/react-router'
-import { Target, ShieldCheck, Heart, Users2, ArrowRight, CheckCircle2, Linkedin, Twitter } from 'lucide-react'
+import { Target, ShieldCheck, Heart, Users2, ArrowRight, CheckCircle2, Linkedin, Twitter, GraduationCap } from 'lucide-react'
 
 export const Route = createFileRoute('/about')({
   component: About,
@@ -17,6 +17,7 @@ const IMG = {
   team:    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&auto=format&fit=crop',
   mission: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80&auto=format&fit=crop',
   vision:  'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format&fit=crop',
+  school:  'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80&auto=format&fit=crop',
 }
 
 const team = [
@@ -190,6 +191,62 @@ function About() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━ CSR — FREE SCHOOLS ━━━━━━━━━━━━━━━━ */}
+      <section className="page-wrap py-32">
+        <div className="relative rounded-[4rem] overflow-hidden bg-[var(--brand-blue)]">
+          {/* Bg image */}
+          <img
+            src={IMG.school}
+            alt="School"
+            className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-blue)] via-[var(--brand-blue)]/90 to-[#001a66]" />
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 p-12 md:p-20 items-center">
+            <div>
+              <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-white text-xs font-black uppercase tracking-widest backdrop-blur-md border border-white/10">
+                <GraduationCap size={16} className="text-[var(--brand-orange)]" />
+                Social Impact · Campaign 2026
+              </div>
+              <h2 className="display-title text-4xl font-extrabold md:text-6xl text-white leading-tight mb-8">
+                Free Websites <br />
+                <span className="text-[var(--brand-orange)]">For Schools.</span>
+              </h2>
+              <p className="text-blue-100/80 text-lg leading-relaxed mb-10 max-w-lg">
+                Every school deserves a professional digital presence. NexonAce provides free, fully featured school websites as part of our commitment to global education.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mb-12">
+                {['School Profile', 'News Hub', 'Online Registration', 'CSR Verified'].map((f) => (
+                  <div key={f} className="flex items-center gap-3">
+                    <CheckCircle2 size={16} className="text-[var(--brand-orange)] flex-shrink-0" />
+                    <span className="text-sm font-bold text-white">{f}</span>
+                  </div>
+                ))}
+              </div>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--brand-orange)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:scale-105 shadow-[0_16px_40px_-8px_var(--brand-orange)]"
+                style={{ color: 'white' }}
+              >
+                Nominate a School <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="rounded-[3rem] overflow-hidden border-4 border-white/10 shadow-2xl">
+                <img
+                  src={IMG.school}
+                  alt="School building"
+                  className="w-full h-96 object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
