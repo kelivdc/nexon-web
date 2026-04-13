@@ -35,7 +35,7 @@ export default function Footer() {
           <h4 className="text-white font-bold mb-6 tracking-wide">Connect With Us</h4>
           <ul className="space-y-4 text-sm text-slate-300">
             <li className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition cursor-pointer">
-              <Mail size={16} className="text-[var(--brand-orange)]" /> <span>marketing@nexonace.com</span>
+              <Mail size={16} className="text-[var(--brand-orange)]" /> <span>hello@nexonace.com</span>
             </li>
             <li className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition cursor-pointer">
               <Phone size={16} className="text-[var(--brand-orange)]" /> <span>+62 812-9959-717</span>

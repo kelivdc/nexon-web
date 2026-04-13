@@ -125,7 +125,7 @@ function ContactPage() {
 
           <div className="space-y-6">
             {[
-              { icon: <Mail className="text-[var(--brand-orange)]" size={20} />, label: 'Email', value: 'marketing@nexonace.com' },
+              { icon: <Mail className="text-[var(--brand-orange)]" size={20} />, label: 'Email', value: 'hello@nexonace.com' },
               { icon: <Phone className="text-[var(--brand-blue)]" size={20} />, label: 'Phone', value: '+62 812-9959-717' },
               { icon: <Globe className="text-emerald-500" size={20} />, label: 'Coverage', value: 'Global' },
               { icon: <MapPin className="text-rose-400" size={20} />, label: 'HQ', value: 'Bogor, Indonesia' },
