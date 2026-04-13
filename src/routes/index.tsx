@@ -271,10 +271,10 @@ function LandingPage() {
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
                   {[
-                    { value: '<3 min', label: 'Target Onboard' },
-                    { value: 'Drag & Drop', label: 'Widgets' },
-                    { value: 'WCAG AA', label: 'Accessibility' },
-                    { value: 'Dark+Light', label: 'Themes' },
+                    { value: '<3 min', label: 'Onboarding' },
+                    { value: '20+', label: 'Custom Widgets' },
+                    { value: 'AAA', label: 'Accessibility' },
+                    { value: '2', label: 'Theme Modes' },
                   ].map(m => (
                     <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center hover:bg-white/10 transition-colors duration-300">
                       <div className="text-2xl font-black text-blue-400">{m.value}</div>
@@ -348,10 +348,10 @@ function LandingPage() {
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {[
-                      { value: 'Mobile-First', label: 'Design' },
-                      { value: 'WCAG 2.1', label: 'Accessibility' },
-                      { value: 'Real-time', label: 'Data Updates' },
-                      { value: 'Dark+Light', label: 'Themes' },
+                      { value: '100%', label: 'Mobile Ready' },
+                      { value: 'AA+', label: 'WCAG Level' },
+                      { value: 'Live', label: 'Data Sync' },
+                      { value: '2', label: 'Theme Modes' },
                     ].map(m => (
                       <div key={m.label} className="bg-white/5 rounded-2xl p-4 border border-white/5 text-center backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
                         <div className="text-2xl font-black text-purple-400">{m.value}</div>
