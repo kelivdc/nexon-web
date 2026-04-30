@@ -24,9 +24,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'header-scrolled bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,51,153,0.08)] border-b border-[var(--line)]'
-          : 'bg-[rgba(0,26,77,0.45)] backdrop-blur-md'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-xl ${scrolled
+          ? 'header-scrolled shadow-[0_4px_30px_rgba(0,51,153,0.08)] border-b border-[var(--line)]'
+          : ''
         }`}
     >
       <nav className="page-wrap flex items-center justify-between h-20">
@@ -41,12 +41,8 @@ export default function Header() {
             <Link
               key={link.to}
               to={link.to}
-              className={`relative text-[13px] font-bold uppercase tracking-[0.12em] transition-colors group ${
-                scrolled
-                  ? 'text-[var(--sea-ink-soft)] hover:text-[var(--brand-blue)]'
-                  : 'nav-link-light'
-              }`}
-              activeProps={{ className: `relative text-[13px] font-bold uppercase tracking-[0.12em] group ${scrolled ? 'text-[var(--brand-blue)]' : 'nav-link-light is-active'}` }}
+              className="relative text-[13px] font-bold uppercase tracking-[0.12em] transition-colors group text-[var(--sea-ink-soft)] hover:text-[var(--brand-blue)]"
+              activeProps={{ className: 'relative text-[13px] font-bold uppercase tracking-[0.12em] group text-[var(--brand-blue)]' }}
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[var(--brand-orange)] transition-all duration-300 group-hover:w-full" />
@@ -66,7 +62,7 @@ export default function Header() {
           {/* Hamburger — mobile only */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`md:hidden p-2 rounded-xl transition-colors ${scrolled ? 'text-[var(--sea-ink)] hover:bg-[var(--foam)]' : 'text-white hover:bg-white/10'}`}
+            className="md:hidden p-2 rounded-xl transition-colors text-[var(--sea-ink)] hover:bg-[var(--foam)]"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}

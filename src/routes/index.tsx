@@ -22,14 +22,14 @@ function LandingPage() {
     <main className="flex flex-col">
 
       {/* ━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[var(--sea-ink)]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,102,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,102,0,0.04)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[var(--brand-orange)] opacity-[0.06] rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--brand-blue)] opacity-[0.08] rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--brand-blue)] opacity-[0.06] rounded-full blur-[120px]" />
 
         <div className="page-wrap relative z-10 py-24">
           <div className="max-w-4xl">
-            <h1 className="display-title text-5xl font-extrabold leading-[1.08] md:text-6xl lg:text-[5.5rem] text-white mb-8 rise-in">
+            <h1 className="display-title text-5xl font-extrabold leading-[1.08] md:text-6xl lg:text-[5.5rem] text-[var(--sea-ink)] mb-8 rise-in">
               Web Design & Development{' '}
               <br className="hidden md:block" />
               for{' '}
@@ -37,7 +37,7 @@ function LandingPage() {
               <span className="text-[var(--brand-orange)]">B2B</span> Companies.
             </h1>
 
-            <p className="max-w-2xl text-xl leading-relaxed text-white/50 mb-12 rise-in rise-in-2">
+            <p className="max-w-2xl text-xl leading-relaxed text-[var(--sea-ink-soft)] mb-12 rise-in rise-in-2">
               We design and build high-performance websites and web apps that help
               businesses launch faster, convert better, and scale confidently.
             </p>
@@ -53,7 +53,7 @@ function LandingPage() {
               </Link>
               <Link
                 to="/case-studies"
-                className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-10 py-4 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-md transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--sea-ink)] px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:bg-[var(--sea-ink)]/90 hover:scale-105 active:scale-95"
                 style={{ color: 'white' }}
               >
                 View Our Work
@@ -67,7 +67,7 @@ function LandingPage() {
                 'Transparent pricing',
                 'Long-term support',
               ].map(item => (
-                <div key={item} className="flex items-center gap-2 text-sm text-white/30">
+                <div key={item} className="flex items-center gap-2 text-sm text-[var(--sea-ink-soft)]">
                   <CheckCircle2 size={14} className="text-[var(--brand-orange)]" />
                   <span className="font-medium">{item}</span>
                 </div>
